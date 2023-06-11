@@ -272,7 +272,7 @@ a:focus-visible {
     top: 0;
     z-index: 4;
     width: 100%;
-    min-height: 100vh;
+    min-height: 10vh;
     background: var(--color-bg);
 }
 
