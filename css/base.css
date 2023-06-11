@@ -35,7 +35,7 @@
 body {
 	margin: 0;
 	color: var(--color-text);
-	background-color: var(--color-bg);
+	background-color: var(--color-bg);height: auto;
 	font-family: acumin-pro, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;overflow-x: hidden;
