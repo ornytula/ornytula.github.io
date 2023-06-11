@@ -285,7 +285,7 @@ a:focus-visible {
 	text-align: center;
 	justify-content: center;
 	padding: 8rem 0 2rem;
-	cursor: default;opacity: 0.6;
+	cursor: default;background-color: #000;color: #8d6025;;
 }
 
 .section__title {
