@@ -47,7 +47,7 @@ body {
 	--color-link-hover: #aaa;
 	--color-bg: #ee940e;
 	--color-text-alt: hsl(0, 0%, 4%);
-	--ratio: 1;
+	--ratio: 1;overflow-x: hidden;
 	--grid-item-width: 23vw;
 	--radius: 8px;	font-family: 'KudryashevHeadline';
 
