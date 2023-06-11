@@ -74,7 +74,6 @@
 
 body {
 	margin: 0;
-	text-transform: uppercase;
 	color: black;
 	background-color: var(--color-bg);
     font-family: 'Kudryashev Display';
@@ -83,48 +82,14 @@ body {
 }
 
 .demo-2 {
-	--color-bg: #ee940e;
-    --color-text-alt: #eaa750;
+	--color-bg: #f7f4f1;
+    --color-text-alt: #8d6025;
 	--ratio: 1;
 	--grid-item-width: 23vw;
 	--radius: 8px;
 }
 
-.demo-3 {
-	--color-bg: #ede9e6;
-	--color-text-alt: hsl(10deg 69% 50%);
-	--ratio: 1.1;
-	--grid-item-width: 17vw;
-	--radius: 12px;
-	--justify: center;
-	--gap: 2.5vw;
-}
 
-.demo-4 {
-	--color-text: #fff;
-	--color-link: #fff;
-	--color-link-hover: #aaa;
-	--color-bg: #0f0e0e;
-	--color-text-alt: hsl(10deg 69% 50%);
-	--ratio: 1;
-	--grid-item-width: 25vw;
-	--radius: 4px;
-	--justify: center;
-	--gap: 2.5vw;
-	--rotation: -45deg;
-	--offset: 20vh;
-}
-
-.demo-5 {
-	--color-bg: hsl(1deg 15% 83%);
-	--color-text-alt: hsl(10deg 69% 50%);
-	--ratio: 0.8;
-	--grid-item-width: 30vw;
-	--radius: 0;
-	--justify: center;
-	--gap: 1.5vw;
-	--offset: 0;
-}
 
 /* Page Loader */
 .js .loading::before,
@@ -161,8 +126,7 @@ body {
 		transform: scale3d(0.5,0.5,1);
 	}
 }
-h1{    font-family: 'Kudryashev Display';font-size: 6vw;font-weight: 900;
-}h2{    font-family: 'Kudryashev Display';font-size: 3vw;font-weight: 900;
+h1{    font-family: 'Kudryashev Display';font-size: 6vw;font-weight: 900;color:#8d6025;}h2{color:#8d6025;font-family: 'Kudryashev Display';font-size: 3vw;font-weight: 900;
 }
 p{font-style: normal;font-size: 22px;}
 a {
@@ -283,7 +247,7 @@ a:focus-visible {
 }
 
 .frame__demos {
-	grid-area: nav;
+	grid-area: nav;width: 100%;
 	display: flex;
 	flex-wrap: wrap;
 	justify-self: stretch;
@@ -321,11 +285,11 @@ a:focus-visible {
 	text-align: center;
 	justify-content: center;
 	padding: 8rem 0 2rem;
-	cursor: default;
+	cursor: default;opacity: 0.6;
 }
 
 .section__title {
-	font-family: kudryashev-d-excontrast-sans, sans-serif;
+    font-family: 'Kudryashev Display';
 	font-weight: 300;
 	font-size: clamp(2rem,17vw,12.5rem);
 	margin: 5vh 0 6vh;
@@ -363,7 +327,7 @@ a:focus-visible {
 	bottom: 0;
 	z-index: -1;
 	width: 100%;
-	height: 100vh;
+	height: 40vh;
 }
 
 .columns {
@@ -422,13 +386,14 @@ a:focus-visible {
 .section--showcase {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: center;overflow-x:hidden;
 	text-align: center;
 	justify-content: center;
-	padding: 8rem 5vw 10vh;
-	cursor: default;
+	padding: 8rem 5vw 10vh;text-align: left;
+	cursor: default;font-style: normal;
 }
-
+.section--showcase img{width: 100%;}
+a,p{padding: 2vw auto;}
 .section__header {
 	display: flex;
 	border-bottom: 1px solid #000;
