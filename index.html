@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>GармоньDRIVE играет для вас</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: #ffe9e9;
+      background-color: #1a0208; /* тёмно-бордовый фон */
+      font-family: "Times New Roman", Georgia, serif;
+    }
+    .wrapper {
+      width: 100%;
+      padding: 20px 0;
+      background-color: #1a0208;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: #1a0208;
+      border-radius: 16px;
+      border: 1px solid #c7932b; /* золотая рамка */
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .logo-top {
+      padding: 20px 32px 8px 32px;
+      text-align: center;
+    }
+    .logo-top img {
+      max-width: 90px;
+      height: auto;
+      display: inline-block;
+    }
+    .gold-divider {
+      width: 80%;
+      height: 1px;
+      margin: 8px auto 0 auto;
+      background: linear-gradient(90deg, transparent, #ffd95b, #ffb300, transparent);
+    }
+
+    /* HERO: фото + текст */
+    .hero-photo {
+      position: relative;
+      border-top: 1px solid #c7932b;
+      border-bottom: 1px solid #c7932b;
+      overflow: hidden;
+    }
+    .hero-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .hero-overlay {
+      position: absolute;
+      bottom: 6%;
+      left: 6%;
+      width: 88%;
+      margin: 0 auto;
+      color: #000000;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-weight: 800;
+      text-shadow: none;
+      text-align: center;
+    }
+    .hero-agency-top {
+      font-size: 40px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 0 0 4px 0;
+      background: linear-gradient(90deg, #fff2cc, #ffd95b, #ffb300);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-agency-main {
+      font-size: 92px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #fff2cc, #ffd95b, #ffb300);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-transform: uppercase;
+      line-height: 1;
+      margin: 0 0 8px 0;
+    }
+    .hero-mainline {
+      font-size: 24px;
+      font-weight: 800;
+      margin: 0 0 4px 0;
+      background: linear-gradient(90deg, #ffe9e9, #ffd5d5, #ffc0c0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-subline {
+      font-size: 32px;
+      font-weight: 800;
+      margin: 0;
+      background: linear-gradient(90deg, #fff2cc, #ffd95b, #ffb300);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Общий текст */
+    .content {
+      padding: 26px 32px 30px 32px;
+      font-size: 22px;
+      line-height: 1.75;
+    }
+    .content p {
+      margin: 8px 0;
+    }
+
+    strong,
+    .gold-text {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-weight: 800;
+      background: linear-gradient(90deg, #fff2cc, #ffd95b, #ffb300);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .content h2 {
+      font-size: 36px;
+      margin: 24px 0 12px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+    }
+
+    .white-block {
+      background: #3b0717;
+      color: #ffe9e9;
+      border-radius: 14px;
+      padding: 18px 20px;
+      border: 1px solid #c7932b;
+      font-size: 22px;
+    }
+    .white-block-title {
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 28px;
+      color: #ffe9e9;
+    }
+    .pill-list {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0 0;
+    }
+    .pill-list li {
+      display: inline-block;
+      margin: 4px 4px 0 0;
+      padding: 6px 13px;
+      border-radius: 999px;
+      background-color: #1a0208;
+      border: 1px solid #ffb300;
+      font-size: 18px;
+      font-weight: 600;
+      color: #ffd5d5;
+    }
+
+    .songs-block {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 14px;
+      border: 1px solid #c7932b;
+      background: #3b0717;
+      font-size: 22px;
+      color: #ffe9e9;
+    }
+    .songs-title {
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 28px;
+      color: #ffe9e9;
+    }
+
+    .video-block {
+      margin-top: 16px;
+      padding: 16px 18px 20px 18px;
+      border-radius: 14px;
+      border: 1px solid #c7932b;
+      background: #5b1022;
+      font-size: 22px;
+      color: #ffe9e9;
+    }
+    .video-title {
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 28px;
+      color: #ffe9e9;
+    }
+
+    .video-main {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .video-main iframe {
+      width: 100%;
+      height: 405px;
+      max-width: 100%;
+      border: none;
+    }
+    .video-thumbs {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .video-thumb {
+      flex: 1;
+      position: relative;
+      padding-top: 56.25%;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border 0.15s ease, transform 0.1s ease;
+      background: #1a0208;
+    }
+    .video-thumb-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.75);
+    }
+    .video-thumb::after {
+      content: '▶';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 28px;
+      color: #fff2cc;
+      text-shadow: 0 0 10px rgba(0,0,0,0.7);
+    }
+    .video-thumb:hover {
+      border-color: #ffb300;
+      transform: translateY(-1px);
+    }
+    .video-thumb.active {
+      border-color: #ffb300;
+    }
+
+    .cta-block {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-radius: 14px;
+      background: #5b1022;
+      border: 1px solid #c7932b;
+      font-size: 22px;
+      color: #ffe9e9;
+    }
+    .cta-button {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 11px 24px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #fff2cc, #ffd95b, #ffb300);
+      color: #3b0717 !important;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .cta-button:hover {
+      opacity: 0.9;
+    }
+    .content a {
+      color: #ffd5d5;
+      text-decoration: underline;
+    }
+
+    .signature-block {
+      margin-top: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 22px;
+    }
+    .signature-text {
+      font-size: 22px;
+    }
+    .contacts-title {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    .contact-line {
+      margin: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .contact-line img {
+      width: 48px;
+      height: 48px;
+      display: inline-block;
+    }
+    .contact-line span,
+    .contact-line a {
+      font-size: 28px;
+      color: #ffd5d5;
+      text-decoration: none;
+    }
+
+    .footer {
+      padding: 16px 32px 20px 32px;
+      font-size: 18px;
+      color: #ffd5d5;
+      border-top: 1px solid #c7932b;
+      background-color: #1a0208;
+    }
+    .footer a {
+      color: #ffd5d5;
+      text-decoration: underline;
+    }
+
+    /* ==== АУДИОПЛЕЕР ==== */
+
+    .audio-player {
+      margin-top: 12px;
+      padding: 16px 18px 18px 18px;
+      border-radius: 14px;
+      background: #1a0208;
+      border: 1px solid #c7932b;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+    }
+
+    .ap-main {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .ap-play-btn {
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
+      border: 2px solid #ffb300;
+      background: radial-gradient(circle at 30% 30%, #fff2cc, #ffd95b, #ffb300);
+      font-size: 28px;
+      font-weight: 800;
+      cursor: pointer;
+      color: #3b0717;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 16px rgba(255, 217, 91, 0.7);
+      transition: transform 0.1s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    }
+
+    .ap-play-btn:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 22px rgba(255, 217, 91, 0.9);
+      opacity: 0.95;
+    }
+
+    .ap-play-btn:active {
+      transform: scale(0.96);
+      box-shadow: 0 0 10px rgba(255, 217, 91, 0.6);
+    }
+
+    .ap-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .ap-title {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 18px;
+      color: #fff2cc;
+    }
+
+    .ap-subtitle {
+      font-size: 14px;
+      color: #ffd5d5;
+      margin-top: 2px;
+    }
+
+    .ap-progress {
+      position: relative;
+      margin-top: 10px;
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #2b0410, #3b0617);
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .ap-progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ff9fb1, #ffd95b, #ffb300);
+      box-shadow: 0 0 10px rgba(255, 159, 177, 0.7);
+      transition: width 0.08s linear;
+    }
+
+    .ap-time {
+      font-size: 14px;
+      color: #ffe9e9;
+      text-align: right;
+      min-width: 80px;
+    }
+
+    .ap-separator {
+      opacity: 0.6;
+      margin: 0 2px;
+    }
+
+    .ap-visualizer {
+      margin-top: 10px;
+      display: flex;
+      gap: 4px;
+      align-items: flex-end;
+      height: 26px;
+    }
+
+    .ap-visualizer span {
+      flex: 1;
+      display: block;
+      height: 30%;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #fff2cc, #ffd95b, #ff9fb1);
+      opacity: 0.7;
+      transform-origin: bottom;
+      animation: none;
+    }
+
+    .audio-player.is-playing .ap-visualizer span {
+      animation: koofPulse 0.9s ease-in-out infinite alternate;
+    }
+
+    .audio-player.is-playing .ap-visualizer span:nth-child(2) {
+      animation-duration: 0.7s;
+    }
+    .audio-player.is-playing .ap-visualizer span:nth-child(3) {
+      animation-duration: 0.85s;
+    }
+    .audio-player.is-playing .ap-visualizer span:nth-child(4) {
+      animation-duration: 0.65s;
+    }
+    .audio-player.is-playing .ap-visualizer span:nth-child(5) {
+      animation-duration: 1.0s;
+    }
+
+    @keyframes koofPulse {
+      0% {
+        transform: scaleY(0.3);
+        opacity: 0.5;
+      }
+      50% {
+        transform: scaleY(0.9);
+        opacity: 0.9;
+      }
+      100% {
+        transform: scaleY(0.5);
+        opacity: 0.7;
+      }
+    }
+
+    .ap-tracklist {
+      list-style: none;
+      padding: 0;
+      margin: 14px 0 0 0;
+      border-top: 1px solid rgba(255, 179, 0, 0.4);
+    }
+
+    .ap-tracklist li {
+      padding: 10px 8px 8px 4px;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid rgba(255, 179, 0, 0.2);
+      cursor: pointer;
+      transition: background 0.12s ease, transform 0.08s ease;
+    }
+
+    .ap-tracklist li:last-child {
+      border-bottom: none;
+    }
+
+    .ap-tracklist li:hover {
+      background: rgba(255, 159, 177, 0.09);
+      transform: translateY(-1px);
+    }
+
+    .ap-tracklist li.active {
+      background: rgba(255, 159, 177, 0.18);
+      box-shadow: inset 0 0 0 1px rgba(255, 179, 0, 0.5);
+    }
+
+    .ap-track-title {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      font-size: 16px;
+      background: linear-gradient(90deg, #fff2cc, #ffd95b, #ffb300);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .ap-track-meta {
+      font-size: 13px;
+      color: #ffe9e9;
+      margin-top: 2px;
+    }
+
+    /* МОБИЛКА */
+
+    @media only screen and (max-width: 480px) {
+      .wrapper {
+        padding: 10px 0;
+      }
+      .container {
+        width: 100% !important;
+        border-radius: 0;
+      }
+      .logo-top {
+        padding: 16px 16px 6px 16px;
+      }
+      .content {
+        padding: 18px 16px 24px 16px;
+        font-size: 18px;
+      }
+      .white-block,
+      .songs-block,
+      .video-block,
+      .cta-block {
+        padding: 14px 14px;
+        font-size: 18px;
+      }
+      .content h2 {
+        font-size: 26px;
+      }
+
+      .hero-overlay {
+        bottom: 4%;
+        left: 4%;
+        width: 92%;
+      }
+      .hero-agency-top {
+        font-size: 24px;
+      }
+      .hero-agency-main {
+        font-size: 58px;
+      }
+      .hero-mainline {
+        font-size: 16px;
+      }
+      .hero-subline {
+        font-size: 22px;
+      }
+
+      .contacts-title {
+        font-size: 26px;
+      }
+      .signature-block {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .contact-line img {
+        width: 32px;
+        height: 32px;
+      }
+      .contact-line span,
+      .contact-line a {
+        font-size: 22px;
+      }
+      .footer {
+        padding: 14px 16px 18px 16px;
+        font-size: 16px;
+      }
+
+      .ap-main {
+        align-items: flex-start;
+      }
+      .ap-play-btn {
+        width: 52px;
+        height: 52px;
+        font-size: 24px;
+      }
+      .ap-time {
+        font-size: 12px;
+        min-width: 60px;
+      }
+
+      .video-main iframe {
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+
+      <div class="logo-top">
+        <img src="logo1.png" alt="KOOF Agency Logo">
+      </div>
+
+      <div class="hero-photo">
+        <img src="post-1.jpg" alt="GармоньDRIVE">
+        <div class="hero-overlay">
+          <div class="hero-agency-top">МУЗЫКАЛЬНОЕ АГЕНТСТВО KOOF</div>
+          <div class="hero-agency-main">GармоньDRIVE</div>
+          <div class="gold-divider"></div>
+          <br>
+          <div class="hero-mainline">уникальный русский шоу-коллектив</div>
+          <div class="hero-subline">играет для вашего праздника</div>
+        </div>
+      </div>
+
+      <div class="content">
+        <p>
+          <span class="gold-text">GармоньDRIVE</span> — шесть гармонистов-виртуозов
+          и яркая певица. Русский стиль, живой звук, энергия, которая растапливает лёд
+          и превращает корпоратив в настоящий праздник.
+        </p>
+
+        <div class="white-block">
+          <div class="white-block-title gold-text">Кто мы</div>
+          <p style="margin-top:4px; margin-bottom:6px;">
+            <span class="gold-text">GармоньDRIVE</span> — уникальный вокально-инструментальный
+            проект. В программе — от народных тем до поп-хитов и киномузыки, всё в живом
+            драйвовом звучании гармони.
+          </p>
+          <p style="margin:6px 0;">
+            В составе — лауреаты всероссийских и международных конкурсов, обладатели
+            медалей Дельфийских игр, участники телевизионных проектов и концертов
+            с ведущими оркестрами народных инструментов.
+          </p>
+          <ul class="pill-list">
+            <li>6 гармонистов-виртуозов</li>
+            <li>певица с яркой подачей</li>
+            <li>русский стиль &amp; современный звук</li>
+            <li>формат для корпоративов и событий</li>
+          </ul>
+        </div>
+
+        <h2 class="gold-text">Формат для вашего корпоратива</h2>
+        <p>
+          Мы делаем праздник, в который гости вовлекаются с первых минут:
+          аплодируют, подпевают, снимают сторис и не хотят отпускать артистов со сцены.
+        </p>
+        <ul style="margin:0 0 0 18px; padding:0;">
+          <li>динамичная программа 45–90 минут;</li>
+          <li>микс хитов, народных мотивов и авторских номеров;</li>
+          <li>выходы в зал и интерактив со зрителями;</li>
+          <li>возможность встроить ваши поздравления и фирменные темы.</li>
+        </ul>
+
+        <!-- АУДИО -->
+        <div class="songs-block">
+          <div class="songs-title gold-text">Уникальное предложение для вашего праздника</div>
+          <p style="margin: 4px 0 8px 0;">
+            <strong>При заказе полного состава GармоньDRIVE</strong> мы напишем
+            <strong>кастомную песню про вашу компанию</strong> — с названием,
+            ценностями и внутренними шутками. Это становится фирменным гимном события.
+          </p>
+          <p style="margin: 4px 0 10px 0;">
+            Ниже — два примера авторских песен в этом стиле:
+            <strong>«Гармонист в офисе»</strong> и <strong>«Поездка на карнавал»</strong>.
+            Клик по названию — и трек играет.
+          </p>
+
+          <div class="audio-player" id="garmon-audio-player">
+            <div class="ap-main">
+              <button class="ap-play-btn" type="button" aria-label="Воспроизвести / Пауза">▶</button>
+
+              <div class="ap-info">
+                <div class="ap-title">Выберите трек ниже</div>
+                <div class="ap-subtitle">пример кастомных песен под бренд</div>
+
+                <div class="ap-progress" aria-label="Прогресс воспроизведения">
+                  <div class="ap-progress-bar"></div>
+                </div>
+              </div>
+
+              <div class="ap-time">
+                <span class="ap-current">0:00</span>
+                <span class="ap-separator">/</span>
+                <span class="ap-duration">0:00</span>
+              </div>
+            </div>
+
+            <div class="ap-visualizer" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+            <ul class="ap-tracklist">
+              <li
+                data-src="8.mp3"
+                data-title="Гармонист в офисе"
+              >
+                <span class="ap-track-title">Гармонист в офисе</span>
+                <span class="ap-track-meta">история про офис, команду и живую музыку</span>
+              </li>
+
+              <li
+                data-src="7.mp3"
+                data-title="Поездка на карнавал"
+              >
+                <span class="ap-track-title">АГЕНТСТВО КООФ</span>
+                <span class="ap-track-meta"></span>
+              </li>
+            </ul>
+
+            <audio id="garmon-audio"></audio>
+          </div>
+        </div>
+
+        <!-- ВИДЕО -->
+        <div class="video-block">
+          <div class="video-title gold-text">Видео: GармоньDRIVE в действии</div>
+          <p style="margin:4px 0 10px 0;">
+            Небольшая подборка: клип в стиле «агент 007» и фрагменты живых выступлений.
+            Кликните по мини-окну, и выбранное видео откроется в большом окне.
+          </p>
+
+          <div class="video-main">
+            <iframe width="720" height="405" src="https://rutube.ru/play/embed/99f54fa93be90a3249739b7f5031a650?skinColor=E53935"  allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+          </div>
+
+         
+        <h2 class="gold-text">Варианты состава и бюджета</h2>
+        <p>Форматы под разные площадки и бюджеты:</p>
+        <ul style="margin:0 0 0 18px; padding:0;">
+          <li><strong>Полный состав:</strong> 6 гармонистов-виртуозов + певица — максимум шоу и энергии.</li>
+          <li><strong>5 гармонистов:</strong> компактный вариант для камерных залов и невысоких сцен.</li>
+          <li><strong>Павел Уханов соло:</strong> программа от всемирно известного гармониста, лауреата международных конкурсов.</li>
+          <li><strong>Один из гармонистов GармоньDRIVE:</strong> формат для камерных событий, деловых ужинов и welcome-зон.</li>
+        </ul>
+
+        <p style="margin-top:8px;">
+          Бюджет зависит от города, длительности выступления и технических условий.
+          Напишите или позвоните — подберём оптимальный вариант под вашу задачу.
+        </p>
+
+        <div class="cta-block">
+          <strong>Хотите, чтобы GармоньDRIVE сделал ваш корпоратив незабываемым?</strong><br>
+          Обсудим дату, формат и состав, а для полного состава подготовим
+          кастомную песню про вашу компанию.
+          <br><br>
+          <a href="mailto:director@koofagency.com?subject=GармоньDRIVE%20-%20корпоративное%20выступление" class="cta-button">
+            Написать Сергею
+          </a>
+        </div>
+
+        <div class="signature-block">
+          <div class="signature-text">
+            <div class="contacts-title gold-text">Контакты</div>
+
+            <div class="contact-line">
+              <img src="icon-phone.png" alt="Телефон">
+              <span>+7 953 428-90-28</span>
+            </div>
+
+            <div class="contact-line">
+              <img src="icon-mail.png" alt="E-mail">
+              <a href="mailto:director@koofagency.com">director@koofagency.com</a>
+            </div>
+
+            <div class="contact-line">
+              <img src="icon-site.png" alt="Сайт">
+              <a href="http://koofagency.com" target="_blank" rel="noopener">koofagency.com</a>
+            </div>
+
+            <div class="contact-line">
+              <img src="vk.png" alt="VK">
+              <a href="https://vk.com" target="_blank" rel="noopener">VK (ссылка на профиль)</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer">
+        Проект подготовлен музыкальным агентством KOOF для корпоративных ивентов с участием группы GармоньDRIVE.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      /* AUDIO */
+      const player = document.getElementById('garmon-audio-player');
+      if (player) {
+        const audio = player.querySelector('#garmon-audio');
+        const playBtn = player.querySelector('.ap-play-btn');
+        const titleEl = player.querySelector('.ap-title');
+        const subtitleEl = player.querySelector('.ap-subtitle');
+        const currentEl = player.querySelector('.ap-current');
+        const durationEl = player.querySelector('.ap-duration');
+        const progressWrap = player.querySelector('.ap-progress');
+        const progressBar = player.querySelector('.ap-progress-bar');
+        const tracks = Array.from(player.querySelectorAll('.ap-tracklist li'));
+
+        let currentTrack = null;
+        let isUserSeeking = false;
+
+        function formatTime(sec) {
+          if (!sec || isNaN(sec)) return '0:00';
+          const m = Math.floor(sec / 60);
+          const s = Math.floor(sec % 60).toString().padStart(2, '0');
+          return m + ':' + s;
+        }
+
+        function setTrack(trackEl, autoplay) {
+          if (!trackEl) return;
+          const src = trackEl.getAttribute('data-src');
+          const title = trackEl.getAttribute('data-title') || 'Трек';
+          if (!src) return;
+
+          tracks.forEach(t => t.classList.remove('active'));
+          trackEl.classList.add('active');
+          currentTrack = trackEl;
+
+          audio.src = src;
+          titleEl.textContent = title;
+          subtitleEl.textContent = 'пример кастомной песни под бренд';
+
+          if (autoplay) {
+            audio.play().catch(function () {});
+          }
+        }
+
+        function updatePlayButton() {
+          if (audio.paused) {
+            playBtn.textContent = '▶';
+            player.classList.remove('is-playing');
+          } else {
+            playBtn.textContent = '❚❚';
+            player.classList.add('is-playing');
+          }
+        }
+
+        function updateProgress() {
+          if (!audio.duration) {
+            progressBar.style.width = '0%';
+            durationEl.textContent = '0:00';
+            currentEl.textContent = '0:00';
+            return;
+          }
+          if (!isUserSeeking) {
+            const percent = (audio.currentTime / audio.duration) * 100;
+            progressBar.style.width = percent + '%';
+          }
+          currentEl.textContent = formatTime(audio.currentTime);
+          durationEl.textContent = formatTime(audio.duration);
+        }
+
+        tracks.forEach(function (trackEl) {
+          trackEl.addEventListener('click', function () {
+            if (currentTrack === trackEl) {
+              if (audio.paused) {
+                audio.play().catch(function () {});
+              } else {
+                audio.pause();
+              }
+            } else {
+              setTrack(trackEl, true);
+            }
+          });
+        });
+
+        playBtn.addEventListener('click', function () {
+          if (!currentTrack) {
+            if (tracks[0]) setTrack(tracks[0], true);
+            return;
+          }
+          if (audio.paused) {
+            audio.play().catch(function () {});
+          } else {
+            audio.pause();
+          }
+        });
+
+        if (progressWrap) {
+          function seek(e) {
+            if (!audio.duration) return;
+            const rect = progressWrap.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const ratio = Math.min(Math.max(x / rect.width, 0), 1);
+            audio.currentTime = ratio * audio.duration;
+          }
+
+          progressWrap.addEventListener('mousedown', function (e) {
+            isUserSeeking = true;
+            seek(e);
+          });
+          progressWrap.addEventListener('mouseup', function (e) {
+            seek(e);
+            isUserSeeking = false;
+          });
+          progressWrap.addEventListener('mousemove', function (e) {
+            if (isUserSeeking) seek(e);
+          });
+
+          progressWrap.addEventListener('touchstart', function (e) {
+            isUserSeeking = true;
+            seek(e.touches[0]);
+          }, { passive: true });
+
+          progressWrap.addEventListener('touchmove', function (e) {
+            if (isUserSeeking) seek(e.touches[0]);
+          }, { passive: true });
+
+          progressWrap.addEventListener('touchend', function () {
+            isUserSeeking = false;
+          });
+        }
+
+        audio.addEventListener('timeupdate', updateProgress);
+        audio.addEventListener('loadedmetadata', updateProgress);
+        audio.addEventListener('play', updatePlayButton);
+        audio.addEventListener('pause', updatePlayButton);
+        audio.addEventListener('ended', function () {
+          updatePlayButton();
+          const idx = tracks.indexOf(currentTrack);
+          if (idx >= 0 && idx < tracks.length - 1) {
+            setTrack(tracks[idx + 1], true);
+          }
+        });
+
+        updateProgress();
+        updatePlayButton();
+      }
+
+      /* VIDEO SLIDER */
+      const mainFrame = document.getElementById('video-main-frame');
+      const thumbsWrap = document.getElementById('video-thumbs');
+      if (mainFrame && thumbsWrap) {
+        const thumbs = Array.from(thumbsWrap.querySelectorAll('.video-thumb'));
+        thumbs.forEach(function (thumb) {
+          thumb.addEventListener('click', function () {
+            const url = thumb.getAttribute('data-video');
+            if (!url) return;
+            mainFrame.src = url;
+            thumbs.forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
