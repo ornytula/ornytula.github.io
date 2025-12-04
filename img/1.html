@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Владимир Аленичев — Российско-Осетинское Музыкальное Общество</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-dark: #050607;
+      --bg-elevated: #0c0f0d;
+      --accent-green: #009052;
+      --text-main: #ffffff;
+      --text-muted: #a4aca8;
+      --border-soft: rgba(255, 255, 255, 0.08);
+      --max-width: 960px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #141e18 0, var(--bg-dark) 55%);
+      color: var(--text-main);
+      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 24px 20px 60px;
+    }
+
+    header.page-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding-bottom: 18px;
+    }
+
+    .page-title-block small {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 11px;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .page-title-block h1 {
+      font-size: 30px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .page-title-block p {
+      margin: 8px 0 0;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .back-link {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-green);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 28px;
+      margin-top: 32px;
+    }
+
+    .bio-section h2 {
+      font-size: 18px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin: 32px 0 12px;
+    }
+
+    .bio-section p {
+      margin: 0 0 12px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    .bio-section ul {
+      margin: 8px 0 16px 18px;
+      padding: 0;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .bio-section li { margin-bottom: 6px; }
+
+    .sticky-panel {
+      border-radius: 24px;
+      background: radial-gradient(circle at 0 0, rgba(11, 226, 123, 0.08), #050607);
+      border: 1px solid var(--border-soft);
+      padding: 18px 18px 20px;
+      position: sticky;
+      top: 16px;
+      align-self: flex-start;
+    }
+
+    .sticky-panel img {
+      border-radius: 18px;
+      margin-bottom: 12px;
+      object-fit: cover;
+    }
+
+    .sticky-panel h3 {
+      font-size: 15px;
+      margin: 4px 0 4px;
+    }
+
+    .sticky-panel p {
+      margin: 3px 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .tag {
+      display: inline-block;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 3px 8px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-right: 6px;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .sticky-panel {
+        position: static;
+      }
+
+      header.page-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="page-header">
+      <div class="page-title-block">
+        <small>Российско-Осетинское Музыкальное Общество</small>
+        <h1>Владимир Аленичев</h1>
+        <p>Основатель и председатель Правления. Дирижёр, работающий на стыке русской и осетинской музыкальных традиций.</p>
+      </div>
+      <a href="index.html#leaders" class="back-link">← к составу руководства</a>
+    </header>
+
+    <div class="layout">
+      <main class="bio-section">
+        <h2>Краткая биография</h2>
+        <p>
+          Здесь нужно вставить выверенный текст на основе официальной характеристики и анкеты
+          Владимира Владимировича Аленичева: образование, ключевые этапы творческого пути,
+          работа с оркестрами и фестивалями.
+        </p>
+        <p>
+          Сейчас блок содержит только общие формулировки без конкретных дат и названий, чтобы не
+          придумывать детали. После согласования можно заменить на точные формулировки из документов.
+        </p>
+
+        <h2>Творческая деятельность</h2>
+        <p>
+          В этом разделе перечисляются основные коллективы и площадки, с которыми связан
+          Аленичев: оркестры народных инструментов, филармонические концерты, фестивальные проекты,
+          сотрудничество с регионами России и Осетией.
+        </p>
+        <ul>
+          <li>руководство оркестром русских народных инструментов (название и регион по документам);</li>
+          <li>подготовка программ с произведениями российских и осетинских композиторов;</li>
+          <li>участие оркестров в гастрольных турах и фестивалях.</li>
+        </ul>
+
+        <h2>Фестивали и проекты</h2>
+        <p>
+          Список фестивалей и проектов, в которых Аленичев выступает инициатором, художественным
+          руководителем или приглашённым дирижёром. Например:
+        </p>
+        <ul>
+          <li>фестиваль дирижёров и солистов оркестров народных инструментов;</li>
+          <li>детско-юношеский фестиваль, где участвуют школьные и студенческие коллективы;</li>
+          <li>создание сводных оркестров и совместных программ с осетинскими ансамблями.</li>
+        </ul>
+
+        <h2>Награды и звания</h2>
+        <p>
+          Здесь нужно аккуратно переписать список государственных и региональных наград из файла
+          «награды на 2025 год» и других официальных источников. Сейчас список приведён в общем виде:
+        </p>
+        <ul>
+          <li>государственные и ведомственные награды в сфере культуры и образования;</li>
+          <li>почётные грамоты региональных органов власти и профильных ведомств;</li>
+          <li>отметки за вклад в развитие оркестрового движения и работу с молодёжью.</li>
+        </ul>
+
+        <h2>Педагогическая и просветительская работа</h2>
+        <p>
+          Раздел для описания деятельности в музыкальных школах, вузах и образовательных проектах:
+          мастер-классы, конкурсы, подготовка лауреатов, участие в жюри.
+        </p>
+        <p>
+          Конкретные названия учебных заведений, конкурсов и лет важно взять из официальных документов,
+          чтобы не искажать фактологию.
+        </p>
+
+        <h2>Роль в Российско-Осетинском Музыкальном Обществе</h2>
+        <p>
+          Как председатель Правления, Владимир Аленичев отвечает за стратегическое развитие Общества,
+          формирование программ фестивалей, работу с партнёрами и поддержку проектов, связанных с
+          русской и осетинской музыкальными традициями.
+        </p>
+      </main>
+
+      <aside class="sticky-panel">
+        <!-- сюда можно поставить тот же портрет, что и на лендинге в белом костюме -->
+        <img src="img/alenichev-full.jpg" alt="Владимир Аленичев" />
+        <h3>Владимир Аленичев</h3>
+        <p>Основатель и председатель Правления Российско-Осетинского Музыкального Общества.</p>
+        <p>Дирижёр, работающий с оркестрами народных инструментов и фестивальными проектами.</p>
+
+        <div>
+          <span class="tag">председатель правления</span>
+          <span class="tag">дирижёр</span>
+          <span class="tag">осетия · россия</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>

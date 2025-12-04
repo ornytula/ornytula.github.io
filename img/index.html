@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Российско-Осетинское Музыкальное Общество</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Шрифт можно поменять -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  <!-- GSAP -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollToPlugin.min.js" defer></script>
+
+  <style>
+    :root {
+      --bg-dark: #050607;
+      --bg-elevated: #0c0f0d;
+      --accent-green: #009052;
+      --accent-green-soft: #0c6240;
+      --text-main: #ffffff;
+      --text-muted: #a4aca8;
+      --border-soft: rgba(255, 255, 255, 0.06);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.7);
+      --max-width: 100vw;
+      --transition-fast: 180ms ease-out;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #141e18 0, var(--bg-dark) 55%);
+      color: var(--text-main);
+      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body { min-height: 100vh; }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* HEADER */
+
+    .rom-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 6, 7, 0.95),
+        rgba(5, 6, 7, 0.8),
+        transparent
+      );
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .rom-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+    }
+
+    .rom-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    .rom-logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: radial-gradient(circle at 30% 0, #f4c947, #c28c1f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rom-logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .rom-nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 13px;
+    }
+
+    .rom-nav a {
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      padding-bottom: 4px;
+    }
+
+    .rom-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent-green);
+      transition: width var(--transition-fast);
+    }
+
+    .rom-nav a:hover {
+      color: var(--text-main);
+    }
+
+    .rom-nav a:hover::after {
+      width: 100%;
+    }
+
+    .rom-header-cta {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: radial-gradient(circle at 0 0, rgba(0, 255, 135, 0.2), transparent);
+      cursor: pointer;
+      transition: background var(--transition-fast), border-color var(--transition-fast), transform 120ms ease-out;
+    }
+
+    .rom-header-cta:hover {
+      transform: translateY(-1px);
+      border-color: rgba(0, 255, 135, 0.5);
+    }
+
+    .rom-nav-toggle {
+      display: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(5, 6, 7, 0.9);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .rom-nav-toggle span {
+      width: 16px;
+      height: 1px;
+      background: var(--text-main);
+      position: relative;
+    }
+
+    .rom-nav-toggle span::before,
+    .rom-nav-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: inherit;
+    }
+
+    .rom-nav-toggle span::before { top: -4px; }
+    .rom-nav-toggle span::after { top: 4px; }
+
+    main { padding-top: 76px; }
+
+    /* HERO с горами */
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-top {
+      padding: 96px 24px 0;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(5, 6, 7, 0.85);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      pointer-events: auto;
+    }
+
+    .hero-kicker-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #0be27b;
+      box-shadow: 0 0 0 4px rgba(11, 226, 123, 0.28);
+    }
+
+    .hero-title {
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.07;
+      letter-spacing: -0.02em;
+      margin: 0 0 16px;
+      max-width: 680px;
+    }
+
+    .hero-title span { display: block; }
+
+    .hero-title-highlight {
+      background: linear-gradient(120deg, #f3f7ff, #b4ffe0);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      max-width: 520px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .hero-bottom {
+      padding: 0 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      pointer-events: none;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .hero-meta span {
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .hero-meta span::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      pointer-events: auto;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 10px 22px;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition:
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        transform 120ms ease-out,
+        box-shadow 120ms ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, #0be27b, #009052);
+      color: #020302;
+      box-shadow: 0 18px 40px rgba(11, 226, 123, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 50px rgba(11, 226, 123, 0.55);
+    }
+
+    .btn-outline {
+      border-color: rgba(255, 255, 255, 0.22);
+      background: rgba(5, 6, 7, 0.7);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(6, 8, 9, 0.95);
+      transform: translateY(-1px);
+    }
+
+    .btn-icon-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      display: inline-block;
+    }
+
+    .hero-svg-wrapper {
+      position: absolute;
+      inset: 0;left: 0;width: 100vw;
+      pointer-events: none;
+    }
+
+    .hero-svg-wrapper svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-portrait-panel {
+      position: absolute;
+      right: 5%;
+      bottom: 8%;
+      width: min(260px, 40vw);
+      border-radius: 32px;
+      background: radial-gradient(circle at 0 0, rgba(11, 226, 123, 0.25), #050607 55%);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      pointer-events: auto;
+    }
+
+    .hero-portrait-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: 50% 15%;
+    }
+
+    .hero-portrait-meta {
+      padding: 10px 14px 14px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero-portrait-meta strong {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .hero-portrait-meta span {
+      color: var(--text-muted);
+    }
+
+    /* СЕКЦИИ */
+
+    section {
+      position: relative;
+      padding: 80px 0;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .section-title span {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .section-description {
+      max-width: 360px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 0 0, rgba(11, 226, 123, 0.06), #050607);
+      border: 1px solid var(--border-soft);
+      padding: 18px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-height: 140px;
+    }
+
+    .card-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .card-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .leaders-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .leader-card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 0 0, rgba(11, 226, 123, 0.06), #050607);
+      border: 1px solid var(--border-soft);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .leader-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: 50% 20%;
+    }
+
+    .leader-body {
+      padding: 14px 16px 18px;
+    }
+
+    .leader-role {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .leader-name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .leader-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .leaders-link {
+      margin-top: 12px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-green);
+    }
+
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.7fr);
+      gap: 32px;
+    }
+
+    .contacts-panel {
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at 0 0, rgba(11, 226, 123, 0.08), #050607);
+      border: 1px solid var(--border-soft);
+      padding: 24px;
+    }
+
+    .contacts-fields {
+      display: grid;
+      gap: 12px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 13px;
+    }
+
+    .field label {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(8, 9, 10, 0.85);
+      color: var(--text-main);
+      padding: 10px 12px;
+      font: inherit;
+      resize: vertical;
+      min-height: 42px;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: rgba(164, 172, 168, 0.7);
+    }
+
+    .contacts-meta {
+      font-size: 14px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contacts-meta strong {
+      color: var(--text-main);
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 24px 0 32px;
+      font-size: 12px;
+      color: var(--text-muted);
+      background: radial-gradient(circle at top, #111815, #050607);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 11px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 960px) {
+      .rom-header-inner { padding-inline: 18px; }
+
+      .hero-portrait-panel {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 6%;
+      }
+
+      .card-grid,
+      .leaders-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contacts-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .rom-nav {
+        position: fixed;
+        inset: 56px 16px auto 16px;
+        flex-direction: column;
+        gap: 12px;
+        padding: 14px 16px;
+        border-radius: 16px;
+        background: rgba(5, 6, 7, 0.98);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        transform: translateY(-16px);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .rom-nav--open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .rom-header-cta { display: none; }
+      .rom-nav-toggle { display: flex; }
+
+      .hero-top { padding-top: 88px; }
+      .hero-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .card-grid,
+      .leaders-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      section {
+        padding: 64px 0;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+<header class="rom-header">
+  <div class="rom-header-inner container">
+    <a href="#hero" class="rom-logo">
+      <div class="rom-logo-icon">
+        <!-- сюда положи логотип "Владимир Аленичев" (logo.png) -->
+        <img src="img/logo-alenichev.png" alt="Логотип Российско-Осетинского Музыкального Общества" />
+      </div>
+      <div>
+        Российско-Осетинское<br />
+        Музыкальное Общество
+      </div>
+    </a>
+
+    <nav class="rom-nav" id="rom-nav">
+      <a href="#about">Общество</a>
+      <a href="#leaders">Руководство</a>
+      <a href="#projects">Проекты</a>
+      <a href="#join">Членство</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+
+    <button class="rom-header-cta" onclick="document.getElementById('contacts').scrollIntoView({behavior:'smooth'})">
+      Для партнёров и музыкантов
+    </button>
+
+    <button class="rom-nav-toggle" id="rom-nav-toggle" aria-label="Открыть меню">
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- HERO с горами -->
+  <section class="hero" id="hero">
+    <div class="hero-svg-wrapper">
+      <!-- SVG и анимации основаны на твоём демо ScrollTrigger: SVG Text Mask  -->
+      <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+        <svg width="100vw" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+            <mask id="m">
+              <g class="cloud1">
+                <rect fill="#fff" width="100%" height="801" y="799" />
+                <image xlink:href="https://assets.codepen.io/721952/cloud1Mask.jpg" width="1200" height="800"/>
+              </g>
+            </mask>
+            
+            <image class="sky" xlink:href="https://assets.codepen.io/721952/sky.jpg"  width="1200" height="590" />
+            <image class="mountBg" xlink:href="https://assets.codepen.io/721952/mountBg.png" width="1200" height="800"/>    
+            <image class="mountMg" xlink:href="https://assets.codepen.io/721952/mountMg.png" width="1200" height="800"/>    
+            <image class="cloud2" xlink:href="https://assets.codepen.io/721952/cloud2.png" width="1200" height="800"/>    
+            <image class="mountFg" xlink:href="https://assets.codepen.io/721952/mountFg.png" width="1200" height="800"/>
+            <image class="cloud1" xlink:href="https://assets.codepen.io/721952/cloud1.png" width="1200" height="800"/>
+            <image class="cloud3" xlink:href="https://assets.codepen.io/721952/cloud3.png" width="1200" height="800"/>
+           
+        <!-- верхний текст -->
+        <text class="hero-svg-text-front" fill="#ffffff" x="180" y="190">
+          РОССИЙСКО-&nbsp;ОСЕТИНСКОЕ
+        </text>
+        <text class="hero-svg-text-front" fill="#ffffff" x="260" y="260">
+          МУЗЫКАЛЬНОЕ ОБЩЕСТВО
+        </text>
+
+        <!-- стрелка прокрутки -->
+        <polyline class="arrow" fill="#fff"
+          points="599,300 599,339 590,329 590,332 600,342 610,332 610,329 601,339 601,300" />
+        <rect id="arrow-btn" width="100" height="80" opacity="0" x="550" y="280" style="cursor:pointer" />
+
+        <!-- текст под маской -->
+        <g mask="url(#m)">
+          <rect fill="#fff" width="100%" height="100%" />
+          <text class="hero-svg-text-back" x="200" y="230" fill="#162a43">
+            ГОРЫ&nbsp;&nbsp;МУЗЫКА&nbsp;&nbsp;ДРУЖБА
+          </text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="hero-inner">
+      <div class="hero-top container">
+        <div class="hero-kicker">
+          <div class="hero-kicker-dot"></div>
+          Культурный мост между Россией и Осетией
+        </div>
+        <h1 class="hero-title">
+          <span>Оркестры, фестивали,</span>
+          <span class="hero-title-highlight">традиционная и академическая музыка</span>
+          <span>в едином пространстве</span>
+        </h1>
+        <p class="hero-subtitle">
+          Общественная организация, объединяющая музыкантов, педагогов и партнёров для развития и
+          популяризации музыкальной культуры России и Осетии.
+        </p>
+      </div>
+
+      <div class="hero-bottom container">
+        <div class="hero-meta">
+          <span>Фестивали и гастроли</span>
+          <span>Образовательные программы</span>
+          <span>Поддержка молодых музыкантов</span>
+        </div>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+            Узнать об Обществе
+          </button>
+          <button class="btn btn-outline" onclick="document.getElementById('leaders').scrollIntoView({behavior:'smooth'})">
+            <span class="btn-icon-dot"></span>
+            Руководители
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <aside class="hero-portrait-panel">
+      <!-- Сюда поставь основной портрет Владимира Аленичева (можно тот, что в белом костюме, 95.jpg) -->
+      <img src="img/alenichev-hero.jpg" alt="Владимир Аленичев" class="hero-portrait-img" />
+      <div class="hero-portrait-meta">
+        <strong>Владимир Аленичев</strong>
+        <span>основатель и председатель Правления Российско-Осетинского Музыкального Общества</span>
+      </div>
+    </aside>
+  </section>
+
+  <!-- ОБЩЕСТВО -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title">
+          <span>О Обществе</span>
+          Миссия и направления
+        </div>
+        <div class="section-description">
+          Кратко о целях и задачах. Здесь можно позже вставить выдержки из Устава: культурное
+          сотрудничество, фестивали, образовательные программы, экспедиции и издательские проекты.
+        </div>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-label">Миссия</div>
+          <div class="card-title">Культурный мост</div>
+          <div class="card-text">
+            Содействие обмену между российскими и осетинскими музыкантами, совместные проекты,
+            поддержка диалога традиций и современности.
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-label">Музыка</div>
+          <div class="card-title">Народная и академическая</div>
+          <div class="card-text">
+            Оркестры народных инструментов, камерные ансамбли, симфонические программы, авторские
+            проекты, премьеры новых произведений.
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-label">Образование</div>
+          <div class="card-title">Мастер-классы и школы</div>
+          <div class="card-text">
+            Работа с молодыми исполнителями, курсы повышения квалификации, фестивальные академии,
+            методические программы.
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- РУКОВОДСТВО -->
+  <section id="leaders">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title">
+          <span>Руководство</span>
+          Люди, которые ведут Общество
+        </div>
+        <div class="section-description">
+          Здесь используются фотографии Аленичева и Ходова. Для отдельной биографии Владимира
+          Аленичева см. страницу <code>alenichev.html</code>.
+        </div>
+      </div>
+
+      <div class="leaders-grid">
+        <article class="leader-card">
+          <!-- Портрет Владимира Аленичева (можешь взять более крупный портрет с домрой) -->
+          <img src="img/alenichev-main.jpg" alt="Владимир Аленичев" class="leader-photo" />
+          <div class="leader-body">
+            <div class="leader-role">Председатель Правления</div>
+            <div class="leader-name">Владимир Аленичев</div>
+            <div class="leader-text">
+              Дирижёр, основатель Общества. Художественный руководитель и главный дирижёр
+              оркестров и проектов, связанных с русскими и осетинскими музыкальными традициями.
+            </div>
+            <a href="alenichev.html" class="leaders-link">Подробная биография</a>
+          </div>
+        </article>
+
+        <article class="leader-card">
+          <!-- Сюда нужна фотография Олега Ходова: положи, например, img/khodov.jpg -->
+          <img src="img/khodov.jpg" alt="Олег Ходов" class="leader-photo" />
+          <div class="leader-body">
+            <div class="leader-role">Член Правления / осетинское направление</div>
+            <div class="leader-name">Олег Ходов</div>
+            <div class="leader-text">
+              Музыкант и популяризатор осетинской музыкальной традиции. Курирует работу с
+              национальными инструментами, ансамблями и региональными партнёрами.
+            </div>
+          </div>
+        </article>
+
+        <article class="leader-card">
+          <img src="img/gergiev-placeholder.jpg" alt="Почётный член Общества" class="leader-photo" />
+          <div class="leader-body">
+            <div class="leader-role">Почётный член</div>
+            <div class="leader-name">Почётный дирижёр</div>
+            <div class="leader-text">
+              Отдельный блок для почётного члена Общества. Здесь можно кратко описать роль,
+              поддержку проектов и значимые инициативы.
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПРОЕКТЫ -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title">
+          <span>Проекты</span>
+          Фестивали и инициативы
+        </div>
+        <div class="section-description">
+          Блок под ключевые фестивали, сводные оркестры, гастроли и образовательные программы.
+        </div>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-label">Фестиваль</div>
+          <div class="card-title">«Серебряные струны»</div>
+          <div class="card-text">
+            Всероссийская площадка для дирижёров и солистов оркестров народных инструментов. Живая
+            сцена, обмен опытом, новые программы.
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-label">Фестиваль</div>
+          <div class="card-title">«Ступеньки мастерства»</div>
+          <div class="card-text">
+            Детско-юношеский фестиваль, где выступают учащиеся музыкальных школ, колледжей и
+            студенты вместе с профессиональными коллективами.
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-label">Оркестры</div>
+          <div class="card-title">Сводные коллективы</div>
+          <div class="card-text">
+            Сводные оркестры русских и осетинских народных инструментов, совместные программы с
+            филармониями и фестивалями в России и за её пределами.
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЧЛЕНСТВО -->
+  <section id="join">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title">
+          <span>Членство</span>
+          Как присоединиться
+        </div>
+        <div class="section-description">
+          Схема вступления. Здесь позже можно вставить ссылки на заявление, положения и выдержки из Устава.
+        </div>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-label">Кто может вступить</div>
+          <div class="card-title">Физические лица</div>
+          <div class="card-text">
+            Музыканты, педагоги, исследователи, организаторы и слушатели, разделяющие цели
+            Общества и принимающие его Устав.
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-label">Кто может вступить</div>
+          <div class="card-title">Организации</div>
+          <div class="card-text">
+            Филармонии, ансамбли, учебные заведения, культурные центры и другие партнёры,
+            работающие в сфере музыкального искусства.
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-label">Процедура</div>
+          <div class="card-title">Заявление и решение Правления</div>
+          <div class="card-text">
+            Кандидат подаёт заявление. Вопрос о приёме рассматривается Правлением Общества в
+            соответствии с Уставом. Возможны разные категории членства.
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- КОНТАКТЫ -->
+  <section id="contacts">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title">
+          <span>Контакты</span>
+          Связаться с Обществом
+        </div>
+        <div class="section-description">
+          Сюда нужно будет подставить официальный адрес, реквизиты, e-mail и ссылки на соцсети.
+        </div>
+      </div>
+
+      <div class="contacts-grid">
+        <div class="contacts-panel">
+          <form class="contacts-fields">
+            <div class="field">
+              <label for="name">Имя</label>
+              <input id="name" name="name" type="text" placeholder="Как к вам обращаться" />
+            </div>
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" placeholder="Для обратной связи" />
+            </div>
+            <div class="field">
+              <label for="topic">Тема обращения</label>
+              <select id="topic" name="topic">
+                <option value="">Выберите тему</option>
+                <option value="membership">Членство</option>
+                <option value="partnership">Партнёрство</option>
+                <option value="festival">Участие в фестивале</option>
+                <option value="media">СМИ / интервью</option>
+                <option value="other">Другое</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Сообщение</label>
+              <textarea id="message" name="message" rows="4" placeholder="Кратко опишите ваш запрос"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              Отправить обращение
+            </button>
+          </form>
+        </div>
+
+        <div class="contacts-panel">
+          <div class="contacts-meta">
+            <p>
+              <strong>Российско-Осетинское Музыкальное Общество</strong><br />
+              Юридический адрес, ОГРН, ИНН будут указаны здесь после финального оформления
+              учредительных документов.
+            </p>
+            <p>
+              <strong>Для партнёров и фестивалей</strong><br />
+              E-mail для переговоров, соглашений, грантов и совместных проектов.
+            </p>
+            <p>
+              <strong>Для музыкантов и педагогов</strong><br />
+              Контакты для заявок на участие в оркестровых и ансамблевых программах,
+              мастер-классах и прослушиваниях.
+            </p>
+            <p>
+              <strong>Социальные сети</strong><br />
+              Ссылки на официальные страницы Общества и партнёрских коллективов.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>© Российско-Осетинское Музыкальное Общество, 2025</div>
+    <div class="footer-links">
+      <a href="#about">Общество</a>
+      <a href="#leaders">Руководство</a>
+      <a href="#projects">Проекты</a>
+      <a href="#join">Членство</a>
+      <a href="#contacts">Контакты</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+    }
+
+    // Мобильное меню
+    const nav = document.getElementById("rom-nav");
+    const navToggle = document.getElementById("rom-nav-toggle");
+
+    if (nav && navToggle) {
+      navToggle.addEventListener("click", function () {
+        nav.classList.toggle("rom-nav--open");
+      });
+
+      nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("rom-nav--open");
+        });
+      });
+    }
+
+    if (!prefersReducedMotion && window.gsap && window.ScrollTrigger) {
+      // Параллакс для слоя неба, гор и облаков (аналог твоего demo)
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: 1
+        }
+      })
+        .fromTo(".sky", { y: 0 }, { y: -200 }, 0)
+        .fromTo(".cloud1", { y: 100 }, { y: -800 }, 0)
+        .fromTo(".cloud2", { y: -150 }, { y: -500 }, 0)
+        .fromTo(".cloud3", { y: -50 }, { y: -650 }, 0)
+        .fromTo(".mountBg", { y: -10 }, { y: -100 }, 0)
+        .fromTo(".mountMg", { y: -30 }, { y: -250 }, 0)
+        .fromTo(".mountFg", { y: -50 }, { y: -600 }, 0);
+
+      // Лёгкое появление текста и портрета
+      const heroTl = gsap.timeline({
+        defaults: { duration: 0.8, ease: "power3.out" }
+      });
+
+      heroTl
+        .from(".hero-kicker", { y: 16, opacity: 0 })
+        .from(".hero-title span", { y: 40, opacity: 0, stagger: 0.08 }, "-=0.5")
+        .from(".hero-subtitle", { y: 20, opacity: 0 }, "-=0.4")
+        .from(".hero-meta span", { y: 16, opacity: 0, stagger: 0.06 }, "-=0.5")
+        .from(".hero-actions .btn", { y: 18, opacity: 0, stagger: 0.08 }, "-=0.5")
+        .from(".hero-portrait-panel", { x: 40, opacity: 0, scale: 0.95 }, "-=0.7");
+
+      // Анимация стрелки + скролл вниз
+      const arrowBtn = document.querySelector("#arrow-btn");
+
+      if (arrowBtn) {
+        arrowBtn.addEventListener("mouseenter", () => {
+          gsap.to(".arrow", { y: 10, duration: 0.8, ease: "back.inOut(3)", overwrite: "auto" });
+        });
+
+        arrowBtn.addEventListener("mouseleave", () => {
+          gsap.to(".arrow", { y: 0, duration: 0.5, ease: "power3.out", overwrite: "auto" });
+        });
+
+        arrowBtn.addEventListener("click", () => {
+          gsap.to(window, {
+            duration: 1.3,
+            ease: "power1.inOut",
+            scrollTo: "#about"
+          });
+        });
+      }
+
+      // Появление секций
+      const sections = gsap.utils.toArray("section:not(.hero)");
+
+      sections.forEach((section) => {
+        const cards = section.querySelectorAll(".card, .leader-card, .contacts-panel");
+
+        gsap.from(section.querySelector(".section-title"), {
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%"
+          },
+          y: 24,
+          opacity: 0,
+          duration: 0.7,
+          ease: "power3.out"
+        });
+
+        if (cards.length) {
+          gsap.from(cards, {
+            scrollTrigger: {
+              trigger: section,
+              start: "top 75%"
+            },
+            y: 30,
+            opacity: 0,
+            stagger: 0.12,
+            duration: 0.7,
+            ease: "power3.out"
+          });
+        }
+      });
+    }
+  });
+</script>
+</body>
+</html>

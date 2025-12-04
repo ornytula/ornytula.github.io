@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Устав Российско-Осетинского Музыкального Общества</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-page: #ffffff;
+      --bg-soft: #f4faf7;
+
+      --green-main: #0d7a4b;
+      --green-dark: #054930;
+      --green-light: #cceee0;
+
+      --gold-light: #fbe8b4;
+      --gold-mid: #e4b552;
+      --gold-dark: #b27a1b;
+
+      --text-main: #151515;
+      --text-muted: #6e7571;
+
+      --border-soft: rgba(0, 0, 0, 0.06);
+      --radius-lg: 24px;
+      --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.08);
+      --transition-fast: 200ms ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-page);
+      color: var(--text-main);
+      font-size: 16px; /* базовый размер побольше */
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* HEADER (компактный) */
+
+    .site-header {
+      position: fixed;
+      inset-inline: 0;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .site-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 5vw;
+      gap: 3vw;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 0, #ffe39c, #c2961f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.18);
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    .brand-title span {
+      display: inline-block;
+    }
+
+    .brand-title .brand-ru {
+      color: var(--text-main);
+    }
+
+    .brand-title .brand-os {
+      color: var(--green-main);
+    }
+
+    .brand-title .brand-mo {
+      background: linear-gradient(120deg, var(--gold-light), var(--gold-mid), var(--gold-dark));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .brand-sub {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .header-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .header-links a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .header-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--green-main);
+      transition: width var(--transition-fast);
+    }
+
+    .header-links a:hover {
+      color: var(--green-dark);
+    }
+
+    .header-links a:hover::after {
+      width: 100%;
+    }
+
+    .header-burger {
+      display: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      background: #ffffff;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-burger span {
+      width: 18px;
+      height: 1px;
+      background: #222;
+      position: relative;
+    }
+
+    .header-burger span::before,
+    .header-burger span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: inherit;
+    }
+
+    .header-burger span::before { top: -5px; }
+    .header-burger span::after { top: 5px; }
+
+    @media (max-width: 768px) {
+      .header-links {
+        position: fixed;
+        left: 5vw;
+        right: 5vw;
+        top: 70px;
+        border-radius: 18px;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        padding: 12px 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.12);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-6px);
+        transition: opacity 160ms ease-out, transform 160ms ease-out;
+      }
+
+      .header-links--open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .header-burger {
+        display: inline-flex;
+      }
+    }
+
+    main {
+      padding-top: 82px;
+    }
+
+    /* HERO УСТАВА — img1.png в бэкграунде */
+
+    .ustav-hero {
+      position: relative;
+      min-height: 50vh;
+      padding: 72px 8vw 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;      background: url(./img/1.png)no-repeat center/cover ;
+
+      overflow: hidden;
+    }
+
+    .ustav-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("img1.png") center/cover no-repeat;
+      z-index: -2;
+    }
+
+    .ustav-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0, rgba(0, 0, 0, 0.85) 80%),
+        radial-gradient(circle at top, rgba(13, 122, 75, 0.4), transparent 60%);
+      z-index: -1;
+    }
+
+    .ustav-hero-inner {
+      max-width: 960px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .ustav-kicker {
+      font-size: 13px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #cfeee0;
+      font-weight: 600;
+    }
+
+    .ustav-title {
+      font-size: clamp(32px, 4.4vw, 56px); /* крупно */
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      margin: 0;
+      font-weight: 800;
+      line-height: 1.4;
+      background: linear-gradient(120deg, var(--gold-light), var(--gold-mid), var(--gold-dark));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .ustav-subtitle {
+      font-size: 17px;
+      line-height: 1.9;
+      max-width: 60ch;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .ustav-hero-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ustav-download {
+      border-radius: 999px;
+      padding: 12px 24px;
+      border: 1px solid var(--green-light);
+      background: var(--green-main);
+      color: #ffffff;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 18px 48px rgba(13, 122, 75, 0.45);
+      transition:
+        background var(--transition-fast),
+        color var(--transition-fast),
+        box-shadow 140ms ease-out,
+        transform 140ms ease-out;
+    }
+
+    .ustav-download span {
+      width: 18px;
+      height: 1px;
+      background: #ffffff;
+      position: relative;
+    }
+
+    .ustav-download span::after {
+      content: "";
+      position: absolute;
+      right: -3px;
+      top: -3px;
+      width: 6px;
+      height: 6px;
+      border-right: 1px solid #ffffff;
+      border-bottom: 1px solid #ffffff;
+      transform: rotate(-45deg);
+    }
+
+    .ustav-download:hover {
+      background: var(--green-dark);
+      box-shadow: 0 22px 60px rgba(13, 122, 75, 0.55);
+      transform: translateY(-1px);
+    }
+
+    .ustav-meta {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 48ch;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .ustav-title {
+        font-size: 26px;
+        letter-spacing: 0.22em;
+      }
+
+      .ustav-subtitle {
+        font-size: 15px;
+      }
+    }
+
+    /* БЛОКИ УСТАВА — слева пункт, справа текст, всё по центру, текст крупнее */
+
+    .ustav-section {
+      padding: 52px 8vw;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+    }
+
+    .ustav-section--alt {
+      background: #0d7a4b;
+      color: #ffffff;
+    }
+
+    .ustav-section-inner {
+      max-width: 1100px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 260px) minmax(0, 1fr); /* слева пункт, справа текст */
+      gap: 40px;
+      align-items: flex-start;
+    }
+
+    .ustav-section-label {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .ustav-section-title {
+      font-size: clamp(2vh,3vh,5vh);
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      margin: 0;
+      font-weight: 700;
+      background: linear-gradient(120deg, var(--gold-light), var(--gold-mid), var(--gold-dark));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .ustav-section--alt .ustav-section-title {
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .ustav-section-text {
+      font-size:clamp(17px, 22px, 28px); /* текст крупнее */
+      line-height: 2;
+      text-align:left;
+      color: var(--text-muted);
+      text-align: center; /* по центру, как просил */
+    }
+
+    .ustav-section--alt .ustav-section-text {
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .ustav-section-text p {
+      margin: 0 0 12px;
+    }
+
+    .ustav-section-text ul {
+      margin: 4px 0 12px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .ustav-section-text li {
+      margin-bottom: 6px;
+    }
+
+    .ustav-section-text li::before {
+      content: "• ";
+    }
+
+    .ustav-lead {
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+
+    .ustav-lead strong {
+      font-style: normal;
+    }
+
+    @media (max-width: 900px) {
+      .ustav-section-inner {
+        grid-template-columns: minmax(0, 1fr);
+        text-align: center;
+      }
+
+      .ustav-section-label {
+        justify-content: center;
+      }
+    }
+
+    /* FOOTER */
+
+    .site-footer {
+      background: var(--green-dark);
+      color: #ffffff;
+      padding: 20px 6vw 22px;
+      font-size: 13px;
+    }
+
+    .site-footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+
+    .footer-links a {
+      opacity: 0.9;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="img/logo.png" alt="Логотип Российско-Осетинского Музыкального Общества" />
+        </div>
+        <div>
+          <div class="brand-title">
+            <span class="brand-ru">РОССИЙСКО-</span>
+            <span class="brand-os">ОСЕТИНСКОЕ</span><br />
+            <span class="brand-mo">МУЗЫКАЛЬНОЕ ОБЩЕСТВО</span>
+          </div>
+          <div class="brand-sub">частный проект</div>
+        </div>
+      </div>
+
+      <nav class="header-links" id="header-links">
+        <a href="index.html#top">главная</a>
+        <a href="index.html#about">о проекте</a>
+        <a href="index.html#team">команда</a>
+        <a href="ustav.html">устав</a>
+        <a href="index.html#contacts">контакты</a>
+      </nav>
+
+      <button class="header-burger" id="header-burger" aria-label="меню">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO УСТАВА с img1.png на бэкграунде -->
+    <section class="ustav-hero">
+      <div class="ustav-hero-inner">
+        <div class="ustav-kicker">документ</div>
+        <h1 class="ustav-title">
+          устав<br />
+          российско-осетинского музыкального общества
+        </h1>
+        <p class="ustav-subtitle">
+          Основной документ, определяющий цели, задачи, структуру управления и принципы деятельности
+          Российско-Осетинского Музыкального Общества.
+        </p>
+
+        <div class="ustav-hero-actions">
+          <!-- Путь в href укажи свой (PDF / DOCX на сервере) -->
+          <a class="ustav-download" href="Ustav_Rossiisko_Osetinskogo_Muzykalnogo_Obshchestva.pdf" download>
+            скачать устав
+            <span></span>
+          </a>
+          <div class="ustav-meta">
+            Текст ниже приведён в ознакомительных целях. Юридически значимым является текст
+            утверждённого и зарегистрированного Устава.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- РУКОВОДИТЕЛИ -->
+    <section class="ustav-section">
+      <div class="ustav-section-inner">
+        <div class="ustav-section-label">
+          <h2 class="ustav-section-title">руководители общества</h2>
+        </div>
+        <div class="ustav-section-text">
+          <p><strong>Председатель Правления</strong> — Аленичев Владимир Витальевич.</p>
+          <p><strong>Члены Правления</strong>: Ходов Олег Бексалтанович, Сусленков Сергей Васильевич.</p>
+          <p><strong>Почётный член Общества</strong> — Гергиев Валерий Абисалович.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ОБЩИЕ ПОЛОЖЕНИЯ -->
+    <section class="ustav-section ustav-section--alt">
+      <div class="ustav-section-inner">
+        <div class="ustav-section-label">
+          <h2 class="ustav-section-title">общие положения</h2>
+        </div>
+        <div class="ustav-section-text">
+          <p class="ustav-lead">
+            <strong>Российско-Осетинское Музыкальное Общество</strong> (далее — Общество) является
+            некоммерческой организацией, созданной в форме общественного объединения.
+          </p>
+          <p>
+            Общество осуществляет деятельность, направленную на развитие, сохранение и популяризацию
+            музыкальных культур России и Осетии-Алании.
+          </p>
+          <p>
+            Общество действует на основании Конституции Российской Федерации, Федерального закона
+            «О некоммерческих организациях», иных нормативно-правовых актов и настоящего Устава.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ЦЕЛИ И ЗАДАЧИ -->
+    <section class="ustav-section">
+      <div class="ustav-section-inner">
+        <div class="ustav-section-label">
+          <h2 class="ustav-section-title">цели и задачи</h2>
+        </div>
+        <div class="ustav-section-text">
+          <p><strong>Основные цели Общества:</strong></p>
+          <ul>
+            <li>укрепление культурных связей между народами России и Осетии;</li>
+            <li>популяризация традиционной и академической музыки двух регионов;</li>
+            <li>поддержка творческих инициатив и культурных проектов;</li>
+            <li>создание условий для профессионального взаимодействия музыкантов и педагогов.</li>
+          </ul>
+          <p><strong>Для достижения своих целей Общество решает следующие задачи:</strong></p>
+          <ul>
+            <li>организация концертов, фестивалей, мастер-классов и экспедиций;</li>
+            <li>создание образовательных программ и публикаций;</li>
+            <li>участие в грантовых, просветительских и международных проектах;</li>
+            <li>формирование архивов, медиатеки и цифровых коллекций;</li>
+            <li>взаимодействие с филармониями, консерваториями и культурными центрами.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ЧЛЕНСТВО -->
+    <section class="ustav-section ustav-section--alt">
+      <div class="ustav-section-inner">
+        <div class="ustav-section-label">
+          <h2 class="ustav-section-title">членство</h2>
+        </div>
+        <div class="ustav-section-text">
+          <p>
+            Членами Общества могут быть граждане Российской Федерации и иностранных государств,
+            разделяющие цели Общества.
+          </p>
+          <p>
+            Приём в члены Общества осуществляется по заявлению и решению Правления.
+          </p>
+          <p>
+            Члены Общества имеют право участвовать в управлении, избирать и быть избранными,
+            вносить предложения, а также обязаны соблюдать Устав и участвовать в деятельности Общества.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ОРГАНЫ УПРАВЛЕНИЯ -->
+    <section class="ustav-section">
+      <div class="ustav-section-inner">
+        <div class="ustav-section-label">
+          <h2 class="ustav-section-title">органы управления</h2>
+        </div>
+        <div class="ustav-section-text">
+          <p>
+            Высшим органом управления Общества является
+            <strong>Общее собрание членов Общества</strong>.
+          </p>
+          <p>
+            Постоянно действующим коллегиальным органом является <strong>Правление</strong>.
+          </p>
+          <p>
+            Исполнительным органом Общества является <strong>Председатель Правления</strong>.
+          </p>
+          <p>
+            Контроль за деятельностью Общества осуществляет <strong>Ревизионная комиссия</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ИМУЩЕСТВО И СРЕДСТВА -->
+    <section class="ustav-section ustav-section--alt">
+      <div class="ustav-section-inner">
+        <div class="ustav-section-label">
+          <h2 class="ustav-section-title">имущество и средства</h2>
+        </div>
+        <div class="ustav-section-text">
+          <p>
+            Источниками формирования имущества Общества являются добровольные взносы, пожертвования,
+            гранты, доходы от уставной деятельности и иные не запрещённые законом поступления.
+          </p>
+          <p>
+            Все средства Общества направляются исключительно на достижение уставных целей.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- РЕОРГАНИЗАЦИЯ И ЛИКВИДАЦИЯ -->
+    <section class="ustav-section">
+      <div class="ustav-section-inner">
+        <div class="ustav-section-label">
+          <h2 class="ustav-section-title">реорганизация и ликвидация</h2>
+        </div>
+        <div class="ustav-section-text">
+          <p>
+            Реорганизация или ликвидация Общества осуществляется решением Общего собрания
+            или в случаях, предусмотренных законодательством Российской Федерации.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ЗАКЛЮЧИТЕЛЬНЫЕ ПОЛОЖЕНИЯ -->
+    <section class="ustav-section ustav-section--alt">
+      <div class="ustav-section-inner">
+        <div class="ustav-section-label">
+          <h2 class="ustav-section-title">заключительные положения</h2>
+        </div>
+        <div class="ustav-section-text">
+          <p>
+            Настоящий Устав вступает в силу с момента государственной регистрации Общества.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>© Российско-Осетинское Музыкальное Общество · частный проект</div>
+      <div class="footer-links">
+        <a href="index.html#top">главная</a>
+        <a href="index.html#about">о проекте</a>
+        <a href="index.html#team">команда</a>
+        <a href="ustav.html">устав</a>
+        <a href="index.html#contacts">контакты</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById("header-burger");
+    const links = document.getElementById("header-links");
+
+    if (burger && links) {
+      burger.addEventListener("click", () => {
+        links.classList.toggle("header-links--open");
+      });
+
+      links.querySelectorAll("a").forEach((a) => {
+        a.addEventListener("click", () => links.classList.remove("header-links--open"));
+      });
+    }
+  </script>
+</body>
+</html>
