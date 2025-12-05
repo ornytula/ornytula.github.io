@@ -544,8 +544,7 @@
     .hero-right {
       justify-content: flex-start;
     }
-
-    .hero-bg img {
+.hero-title,.hero-bg img {
       width: 100%;
     }
 
