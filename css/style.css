@@ -294,7 +294,7 @@ main {
 }
 
 .section-title {
-  font-size: clamp(26px, 6vh, 9vh);
+  font-size: clamp(26px, 3vh, 9vh);
   letter-spacing: 0.22em;
   text-transform: uppercase;
   margin: 0 0 24px;
