@@ -2,329 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>О проекте — Российско-Осетинское Музыкальное Общество</title>
+  <title>Российско-Осетинское Музыкальное Общество — частный проект</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <style>
-    :root {
-      --green-main: #0d7a4b;
-      --green-dark: #054930;
-      --green-light: #cceee0;
-
-      --gold-light: #fbe8b4;
-      --gold-mid: #e4b552;
-      --gold-dark: #b27a1b;
-
-      --text-main: #ffffff;
-      --text-muted: #d4eadd;
-
-      --transition-fast: 200ms ease-out;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--green-main);
-      color: var(--text-main);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    /* HEADER (компактный, как на уставе) */
-    .site-header {
-      position: fixed;
-      inset-inline: 0;
-      top: 0;
-      z-index: 20;
-      background: rgba(6, 51, 34, 0.96);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .site-header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 5vw;
-      gap: 3vw;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .brand-logo {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 0, #ffe39c, #c2961f);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
-    }
-
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .brand-title {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      line-height: 1.4;
-      color: #ffffff;
-    }
-
-    .brand-title span {
-      display: inline-block;
-    }
-
-    .brand-title .brand-ru {
-      color: #ffffff;
-    }
-
-    .brand-title .brand-os {
-      color: #cfeee0;
-    }
-
-    .brand-title .brand-mo {
-      background: linear-gradient(120deg, var(--gold-light), var(--gold-mid), var(--gold-dark));
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .brand-sub {
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .header-links {
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.75);
-    }
-
-    .header-links a {
-      position: relative;
-      padding-bottom: 2px;
-    }
-
-    .header-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 1px;
-      background: var(--gold-mid);
-      transition: width var(--transition-fast);
-    }
-
-    .header-links a:hover {
-      color: #ffffff;
-    }
-
-    .header-links a:hover::after {
-      width: 100%;
-    }
-
-    .header-burger {
-      display: none;
-      width: 36px;
-      height: 36px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      background: transparent;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .header-burger span {
-      width: 18px;
-      height: 1px;
-      background: #ffffff;
-      position: relative;
-    }
-
-    .header-burger span::before,
-    .header-burger span::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: inherit;
-    }
-
-    .header-burger span::before { top: -5px; }
-    .header-burger span::after { top: 5px; }
-
-    @media (max-width: 768px) {
-      .header-links {
-        position: fixed;
-        left: 5vw;
-        right: 5vw;
-        top: 70px;
-        border-radius: 18px;
-        background: #053725;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 12px 14px;
-        flex-direction: column;
-        align-items: flex-start;
-        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.4);
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(-6px);
-        transition: opacity 160ms ease-out, transform 160ms ease-out;
-      }
-
-      .header-links--open {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-      }
-
-      .header-burger {
-        display: inline-flex;
-      }
-    }
-
-    main {
-      min-height: 100vh;
-      background: radial-gradient(circle at top, #148b57 0, #0d7a4b 30%, #054930 80%);
-      padding-top: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-bottom: 40px;
-    }
-
-    /* БЛОК О ПРОЕКТЕ — центр, крупный текст */
-    .about-wrap {
-      max-width: 900px;
-      padding: 40px 8vw 48px;
-      text-align: center;
-      color: #ffffff;
-    }
-
-    .about-kicker {
-      font-size: 13px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      font-weight: 600;
-    }
-
-    .about-title {
-      font-size: clamp(30px, 4.2vw, 40px);
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      margin: 0 0 28px;
-      font-weight: 800;
-      background: linear-gradient(120deg, var(--gold-light), var(--gold-mid), var(--gold-dark));
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .about-text {
-      font-size: 18px;
-      line-height: 2;
-      color: rgba(255, 255, 255, 0.94);
-      margin-bottom: 30px;
-    }
-
-    .about-text p {
-      margin: 0 0 18px;
-    }
-
-    .about-sign {
-      font-size: 17px;
-      font-style: italic;
-      color: var(--text-muted);
-    }
-
-    .about-sign strong {
-      font-style: normal;
-      color: #ffffff;
-      display: block;
-      margin-top: 6px;
-      font-size: 16px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-
-    /* FOOTER */
-    .site-footer {
-      position: relative;
-      z-index: 1;
-      background: transparent;
-      color: rgba(255, 255, 255, 0.7);
-      padding: 0 6vw 24px;
-      font-size: 12px;
-    }
-
-    .site-footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-size: 11px;
-    }
-
-    .footer-links a {
-      opacity: 0.9;
-    }
-
-    .footer-links a:hover {
-      opacity: 1;
-    }
-  </style>
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="site-header-inner">
       <div class="brand">
         <div class="brand-logo">
-          <img src="img/logo.png" alt="Логотип Российско-Осетинского Музыкального Общества" />
+          <img src="img/logo.png" alt="Логотип Владимира Аленичева" />
         </div>
         <div>
           <div class="brand-title">
@@ -338,11 +29,17 @@
 
       <nav class="header-links" id="header-links">
         <a href="index.html#top">главная</a>
-        <a href="about.html">о проекте</a>
-        <a href="index.html#team">команда</a>
+           <a href="about.html">о проекте</a>
+
+        <a href="team.html">команда</a>
         <a href="ustav.html">устав</a>
         <a href="index.html#contacts">контакты</a>
       </nav>
+      
+      <button class="header-cta" onclick="document.getElementById('contacts').scrollIntoView({behavior:'smooth'})">
+        <span class="header-cta-dot"></span>
+        написать нам
+      </button>
 
       <button class="header-burger" id="header-burger" aria-label="меню">
         <span></span>
@@ -350,42 +47,106 @@
     </div>
   </header>
 
-  <main>
-    <section class="about-wrap">
-      <div class="about-kicker">о проекте</div>
-      <h1 class="about-title">частная инициатива о двух великих народах</h1>
-
-      <div class="about-text">
-        <p>
-          Этот проект — моя личная, глубокая и абсолютно искренняя инициатива. Он родился из
-          встреч с людьми Осетии и из ощущения, что между Россией и Осетией уже существует
-          невидимый музыкальный мост, который нужно не просто сохранить, а сделать видимым,
-          ощутимым, звучащим.
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg">
+        <img src="./img/1.png" alt="Российско-Осетинское Музыкальное Общество" />
+        <div class="hero-bg-overlay"></div>
+      </div>
+      
+      <div class="hero-left fade-up">
+        <div class="hero-kicker">музыка · горы · живые связи</div>
+        <h1 class="hero-title">
+          <span class="hero-mo">О ПРОЕКТЕ</span>
+        </h1>
+        <div class="hero-tagline">пространство для традиций и современных проектов</div>
+        <p class="hero-text">
+          Частный проект, выросший из встреч с людьми Северной Осетии и любви к музыке гор. Мы соединяем
+          оркестры, ансамбли, педагогов и слушателей, чтобы сохранить и показать миру культуру наших народов.
         </p>
-        <p>
-          Русский и осетинский народы — два великих народа с богатейшей музыкальной культурой,
-          с живой традицией, с памятью о предках и устремлённостью в будущее. У каждого — свой
-          голос, свой тембр, свой ритм. Но когда они звучат вместе, рождается пространство
-          взаимного уважения, доверия и силы.
-        </p>
-        <p>
-          Этот проект направлен, прежде всего, на содействие развитию осетино-русских культурных
-          связей. На поддержку музыкантов, оркестров, педагогов, на создание совместных программ
-          и фестивалей, на то, чтобы музыка Осетии и России звучала не эпизодически,
-          а системно и достойно.
-        </p>
-        <p>
-          Сейчас — время быть вместе. Время, когда важно не разъединять, а соединять. Не терять
-          корни, а показывать их миру. И если наш проект поможет хотя бы одному человеку услышать
-          Осетию и Россию по-новому, значит, мы движемся в верном направлении.
-        </p>
+        
       </div>
 
-      <div class="about-sign">
-        от всего сердца<br />
-        <strong>Владимир Аленичев</strong>
+     
       </div>
     </section>
+
+  <main>
+    <section class="about-split" id="about">
+        <!-- левая колонка: текст -->
+        <div class="about-split-text">
+          <div class="about-split-kicker">о проекте</div>
+          <h2 class="about-split-title">
+      Моя Осетия</h2>
+
+            <p>Дорогие друзья!</p>
+            
+            <p>Этот блок я решил назвать «Моя Осетия». Почему именно так? Потому что с момента моего знакомства с этим удивительным краем он занял в моей жизни особое, очень личное место. Это не просто география — это внутреннее состояние, атмосфера, люди, к которым невозможно относиться формально. И однажды Осетия становится не «чужой республикой», а частью твоего собственного пути. Поэтому — моя Осетия.</p>
+            
+            <p>В этом году мне посчастливилось попасть в Северную Осетию–Аланию, познакомиться с удивительными людьми и удивительной культурой. Мы приехали туда в составе гастрольной группы, и у нас состоялся совместный концерт с Оркестром национальных инструментов «Иристон» под руководством Олега Ходова.</p>
+            
+            <p>Творческое сотрудничество очень быстро переросло в человеческую дружбу — иначе и быть не могло. Осетинская открытость, теплота, гостеприимство и невероятное уважение к музыке произвели на меня сильнейшее впечатление. Именно эта поездка стала отправной точкой создания Российско-Осетинского Музыкального Общества.</p>
+            
+            <p>Для меня важно, чтобы этот проект стал платформой, укрепляющей культурные связи между нашими регионами. Чтобы музыканты, оркестры, педагоги могли сотрудничать, обмениваться опытом, создавать новые программы и представлять музыку Осетии на больших сценах.</p>
+            
+            <p>Одна из наших программ называется «В содружестве культур — единство нации». И это не просто слова. Когда звучат вместе культура России и культура Осетии, возникает единое пространство доверия, силы и глубокого уважения — то самое пространство, которое делает нас частью одной большой Родины.</p>
+            
+            <p>В планах проекта — развивать совместные инициативы, представлять музыку осетинских композиторов, рассказывать об истории, искусстве и выдающихся людях Осетии–Алании. Этот блог будет посвящён именно этому — моей личной истории знакомства с республикой, её музыкой, её традициями и тем удивительным человеческим теплом, которое я встретил там.</p>
+            
+                        
+      
+          <div class="about-split-sign">
+            от всего сердца<br />
+            <strong>Владимир Аленичев</strong>
+          </div>
+        </div>
+      
+        <!-- правая колонка: фото 50% -->
+        <div class="about-split-photo">
+          <img src="img/98.jpg" alt="Владимир Аленичев" />
+        </div>
+      </section>
+      
+    <!-- CONTACTS — стекло -->
+    <section class="section contacts" id="contacts">
+        <div class="section-subtitle">контакты</div>
+        <h2 class="section-title">дорогие друзья, напишите нам</h2>
+  
+        <div class="contacts-inner fade-up">
+          <div class="contacts-panel">
+            <form>
+              <div class="field-group">
+                <label class="field-label" for="name">имя</label>
+                <input class="field-input" id="name" name="name" type="text" placeholder="Как к вам обращаться" />
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="email">e-mail</label>
+                <input class="field-input" id="email" name="email" type="email" placeholder="Для обратной связи" />
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="message">сообщение</label>
+                <textarea class="field-textarea" id="message" name="message" rows="4" placeholder="Кратко опишите ваш запрос"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                отправить
+              </button>
+            </form>
+          </div>
+  
+          <div class="contacts-info">
+            <p>
+              <strong>Российско-Осетинское Музыкальное Общество</strong><br />
+              Частный проект, который развивается шаг за шагом. Здесь появятся официальные контакты и реквизиты,
+              когда структура будет полностью оформлена.
+            </p>
+            <p>
+              Для партнёров, музыкантов и организаторов фестивалей — этот раздел станет точкой входа:
+              заявка на участие, предложения о совместных проектах, идеи по развитию музыкальной жизни Осетии и России.
+            </p>
+          </div>
+        </div>
+      </section>
   </main>
 
   <footer class="site-footer">
@@ -394,7 +155,7 @@
       <div class="footer-links">
         <a href="index.html#top">главная</a>
         <a href="about.html">о проекте</a>
-        <a href="index.html#team">команда</a>
+        <a href="team.html">команда</a>
         <a href="ustav.html">устав</a>
         <a href="index.html#contacts">контакты</a>
       </div>
@@ -402,6 +163,7 @@
   </footer>
 
   <script>
+    // мобильное меню
     const burger = document.getElementById("header-burger");
     const links = document.getElementById("header-links");
 
@@ -414,6 +176,21 @@
         a.addEventListener("click", () => links.classList.remove("header-links--open"));
       });
     }
+
+    // анимация появления блоков
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.18 }
+    );
+
+    document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
   </script>
 </body>
 </html>
