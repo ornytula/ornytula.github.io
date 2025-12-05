@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Олег Бексултанович Ходов — Российско-Осетинское Музыкальное Общество</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-page: #ffffff;
+      --bg-soft: #f4faf7;
+
+      --green-main: #0d7a4b;
+      --green-dark: #054930;
+      --green-light: #cceee0;
+
+      --gold-light: #fbe8b4;
+      --gold-mid: #e4b552;
+      --gold-dark: #b27a1b;
+
+      --text-main: #151515;
+      --text-muted: #6e7571;
+
+      --border-soft: rgba(0, 0, 0, 0.08);
+      --radius-lg: 24px;
+      --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-page);
+      color: var(--text-main);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* HEADER (упрощённый, как у главной) */
+
+    .site-header {
+      position: fixed;
+      inset-inline: 0;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .site-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 6vw;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 0, #ffe39c, #c2961f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.18);
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-title {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    .brand-title span {
+      display: inline-block;
+    }
+
+    .brand-title .brand-ru {
+      color: var(--text-main);
+    }
+
+    .brand-title .brand-os {
+      color: var(--green-main);
+    }
+
+    .brand-title .brand-mo {
+      background: linear-gradient(120deg, var(--gold-light), var(--gold-mid), var(--gold-dark));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .brand-sub {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .back-link {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green-main);
+      border-radius: 999px;
+      padding: 8px 14px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .back-link span {
+      font-size: 16px;
+      transform: translateY(-1px);
+    }
+
+    .back-link:hover {
+      border-color: rgba(0, 0, 0, 0.18);
+    }
+
+    /* PAGE LAYOUT */
+
+    main {
+      padding-top: 90px;
+    }
+
+    .page {
+      padding: 64px 8vw 80px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.4fr);
+      gap: 4vw;
+      align-items: center;
+      margin-bottom: 54px;
+    }
+
+    .hero-tag {
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 3.8vw + 8px, 44px);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin: 0 0 16px;
+      font-weight: 800;
+      line-height: 1.2;
+      background: linear-gradient(120deg, var(--gold-light), var(--gold-mid), var(--gold-dark));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-main);
+      margin-bottom: 18px;
+      font-weight: 500;
+    }
+
+    .hero-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .hero-photo-card {
+      border-radius: 28px;
+      background: var(--bg-soft);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-soft);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-photo {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      max-height: 420px;
+      overflow: hidden;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .hero-photo-caption {
+      padding: 14px 18px 18px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .hero-photo-caption strong {
+      display: block;
+      font-size: 13px;
+      color: var(--green-dark);
+      margin-bottom: 4px;
+    }
+
+    /* SECTIONS */
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+      background: linear-gradient(120deg, var(--gold-light), var(--gold-mid), var(--gold-dark));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .section-body {
+      font-size: 14px;
+      line-height: 1.9;
+      color: var(--text-muted);
+      max-width: 72ch;
+    }
+
+    .section-body p {
+      margin: 0 0 10px;
+    }
+
+    .section-body ul {
+      margin: 4px 0 12px 18px;
+      padding: 0;
+    }
+
+    .section-body li {
+      margin-bottom: 6px;
+    }
+
+    .pill-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      background: #ffffff;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-photo-card {
+        max-width: 420px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding-inline: 6vw;
+      }
+    }
+
+    /* FOOTER */
+
+    .site-footer {
+      background: var(--green-dark);
+      color: #ffffff;
+      padding: 20px 6vw 22px;
+      font-size: 12px;
+    }
+
+    .site-footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+
+    .footer-links a {
+      opacity: 0.9;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="brand">
+        <div class="brand-logo">
+          <!-- тот же логотип, что на главной -->
+          <img src="img/logo.png" alt="Логотип Российско-Осетинского Музыкального Общества" />
+        </div>
+        <div>
+          <div class="brand-title">
+            <span class="brand-ru">РОССИЙСКО-</span>
+            <span class="brand-os">ОСЕТИНСКОЕ</span><br />
+            <span class="brand-mo">МУЗЫКАЛЬНОЕ ОБЩЕСТВО</span>
+          </div>
+          <div class="brand-sub">частный проект</div>
+        </div>
+      </div>
+
+      <a href="index.html#team" class="back-link">
+        <span>←</span> к команде проекта
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="page">
+      <!-- HERO-БЛОК ХОДОВА -->
+      <section class="hero">
+        <div>
+          <div class="hero-tag">художественный руководитель · дирижёр</div>
+          <h1 class="hero-title">олег бексултанович ходов</h1>
+          <p class="hero-subtitle">
+            Художественный руководитель и главный дирижёр оркестра национальных инструментов
+            «Иристон» Государственной филармонии Республики Северная Осетия — Алания, арт-директор
+            культурно-просветительского проекта «Вне времени».
+          </p>
+          <div class="hero-meta">
+            Заслуженный артист Республики Северная Осетия — Алания и Южной Осетии. Музыкант,
+            который соединяет традиционный звук осетинских инструментов с современным сценическим
+            языком.
+          </div>
+        </div>
+
+        <aside class="hero-photo-card">
+          <div class="hero-photo">
+            <!-- Фото Ходова (balalaika / национальные инструменты) -->
+            <img src="img/khodov.jpg" alt="Олег Бексултанович Ходов" />
+          </div>
+          <div class="hero-photo-caption">
+            <strong>Олег Ходов</strong>
+            художественный руководитель и главный дирижёр оркестра национальных инструментов «Иристон»
+          </div>
+        </aside>
+      </section>
+
+      <!-- БИОГРАФИЯ И ОБРАЗОВАНИЕ -->
+      <section class="section">
+        <h2 class="section-title">биография и образование</h2>
+        <div class="section-body">
+          <p>
+            Олег Бексултанович Ходов окончил Колледж культуры во Владикавказе и
+            Северо-Кавказский институт культуры в Нальчике. Профессиональный путь дирижёра связан
+            с развитием осетинской национальной музыкальной культуры и сценическим воплощением
+            её традиций.
+          </p>
+          <p>
+            С 2006 года он руководит оркестром национальных инструментов Государственной
+            филармонии Республики Северная Осетия — Алания, выстраивая репертуар и творческую
+            политику коллектива.
+          </p>
+        </div>
+      </section>
+
+      <!-- ОРКЕСТР «ИРИСТОН» -->
+      <section class="section">
+        <h2 class="section-title">оркестр национальных инструментов «иристон»</h2>
+        <div class="section-body">
+          <p>
+            В 2008 году Олег Ходов создал оркестр национальных инструментов «Иристон». Главная
+            задача коллектива — сохранение и развитие осетинской национальной музыкальной культуры,
+            работа с традиционным репертуаром и современными композиторами.
+          </p>
+          <p>
+            В 2010 году оркестр вошёл в состав Государственной филармонии Республики Северная
+            Осетия — Алания, став одной из её ключевых творческих единиц.
+          </p>
+          <p>
+            В репертуаре «Иристона» — фольклорные композиции, произведения осетинских и российских
+            композиторов, а также зарубежная музыка. Среди авторов — Христофор Плиев, Феликс Алборов,
+            Ирина Мистулова и другие.
+          </p>
+          <p>
+            Коллектив активно сотрудничает с известными осетинскими певцами (Эдуард Дауров,
+            Алла Хадикова) и молодыми солистами (Лана Нартикова, Сослан Кусов), а также с
+            вокально-инструментальным ансамблем «Уацамонга».
+          </p>
+          <div class="pill-row">
+            <span class="pill">оркестр «иристон»</span>
+            <span class="pill">госфилармония рсо-алания</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- КОНЦЕРТЫ И ПРОСВЕТИТЕЛЬСТВО -->
+      <section class="section">
+        <h2 class="section-title">концертная и просветительская деятельность</h2>
+        <div class="section-body">
+          <p>
+            Оркестр под управлением Олега Ходова активно выступает в Северной Осетии и за её
+            пределами. Коллектив участвует в фестивалях и конкурсах, таких как «Мир Кавказу»,
+            «Музыка соседей — музыка друзей», «Музыкальные сезоны Северного Кавказа».
+          </p>
+          <p>
+            Важное направление работы — культурно-просветительская деятельность. Оркестр проводит
+            концерты в учебных заведениях, домах культуры и детских садах, участвует в городских и
+            республиканских мероприятиях, знакомя слушателей с осетинским музыкальным наследием.
+          </p>
+          <p>
+            В 2023 году оркестр «Иристон» отметил 15-летний юбилей. За эти годы коллектив стал
+            одной из ключевых площадок для сохранения и обновления национальной традиции.
+          </p>
+        </div>
+      </section>
+
+      <!-- ИНСТРУМЕНТЫ И ФОЛЬКЛОР -->
+      <section class="section">
+        <h2 class="section-title">осетинские инструменты и фольклор</h2>
+        <div class="section-body">
+          <p>
+            Олег Ходов владеет многими музыкальными инструментами и активно участвует в
+            сохранении осетинского фольклора и языка. В оркестре «Иристон» звучат уникальные
+            национальные инструменты, в том числе дала-фандыр, кисын-фандыр и осетинская
+            гармоника.
+          </p>
+          <p>
+            Через работу с этими инструментами и живое исполнение традиционных напевов оркестр
+            создаёт звучание, в котором сохраняется аутентика и одновременно появляется новое
+            сценическое прочтение.
+          </p>
+          <div class="pill-row">
+            <span class="pill">дала-фандыр</span>
+            <span class="pill">кисын-фандыр</span>
+            <span class="pill">осетинская гармоника</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- НАГРАДЫ -->
+      <section class="section">
+        <h2 class="section-title">награды и звания</h2>
+        <div class="section-body">
+          <p>
+            Олег Бексултанович Ходов — заслуженный артист Республики Северная Осетия — Алания
+            и Южной Осетии.
+          </p>
+          <p>
+            В 2024 году он был удостоен почётной грамоты Главы Республики Северная Осетия — Алания.
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>© Российско-Осетинское Музыкальное Общество · частный проект</div>
+      <div class="footer-links">
+        <a href="index.html#top">главная</a>
+        <a href="index.html#team">команда</a>
+        <a href="index.html#contacts">контакты</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
