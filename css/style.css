@@ -294,7 +294,7 @@ main {
 }
 
 .section-title {
-  font-size: clamp(26px, 3vh, 9vh);
+  font-size: 2vw;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   margin: 0 0 24px;
@@ -503,13 +503,15 @@ main {
   .hero-text {
     font-size: 15px;
   }
+  .section-title {
+    font-size: 3vw;
+  }
 }
 
 /* === ABOUT (MY OSSETIA SPLIT) ================================== */
 
 .about {
-  background: #48b08f;
-  width: 100vw;
+  width: 60vw;
   margin: 0 auto;
 }
 
@@ -517,7 +519,7 @@ main {
   display: grid;
   margin: auto;
   grid-template-columns: 1fr;
-  gap: 6vw;
+  gap: 3vw;
   align-items: flex-start;
 }
 
@@ -525,7 +527,7 @@ main {
   font-size: 18px;
   line-height: 2;
   font-style: italic;
-  color: #ffffff;
+  color: #050404;
   margin-bottom: 24px;
   font-weight: 500;
 }
@@ -621,15 +623,14 @@ main {
   .about-inner {
     grid-template-columns: minmax(0, 1fr);
     gap: 32px;
-    width: 100vw;
     padding-inline: 5vw;
   }
-
+  .section-title {
+    font-size: 4vw;}
   .about-quote {
-    width: 90vw;
     margin-left: 5vw;
   }
-
+ .about{width: 100%;}
   .about-split {
     grid-template-columns: minmax(0, 1fr);
     height: auto;
@@ -685,7 +686,7 @@ main {
 .person-photo {
   flex: 1 1 50%;
   position: relative;
-  height: 98vh;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -803,8 +804,7 @@ main {
   }
 
   .person-photo {
-    flex: 0 0 45vh;
-    height: 45vh;
+    height: 98vh;
   }
 
   .person-content {
