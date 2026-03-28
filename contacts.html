@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Честная Позиция — Contacts</title>
+<meta name="description" content="Контакты и форма заявки">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Tektur:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<header class="header">
+  <div class="container header__row">
+    <button class="burger" type="button" data-menu-open aria-label="Открыть меню"><span></span><span></span><span></span></button>
+    <a class="brand" href="index.html"><img src="assets/img/logo.png" alt="Честная Позиция"></a>
+    <div class="header__tools">
+      <a class="header__link" href="contacts.html">Контакты</a>
+      <a class="header__btn header__search" href="contacts.html" aria-label="Поиск">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l5 5"></path></svg>
+      </a>
+      <button class="header__btn" type="button" data-order-open>Заказать</button>
+    </div>
+  </div>
+</header>
+<div class="menu-backdrop" data-menu-close></div>
+<aside class="menu">
+  <div class="menu__panel">
+    <div class="menu__top">
+      <div class="metal-text" style="font-size:24px;text-transform:uppercase">Меню</div>
+      <button class="menu__close" type="button" data-menu-close>✕</button>
+    </div>
+    <nav class="menu__nav">
+      <a class="menu__link" href="index.html"><span>Главная</span><small>входной экран</small></a>
+      <a class="menu__link" href="about.html"><span>О нас</span><small>позиция и подход</small></a>
+      <a class="menu__link" href="services.html"><span>Услуги</span><small>полный состав работ</small></a>
+      <a class="menu__link" href="portfolio.html"><span>Портфолио</span><small>объекты и кейсы</small></a>
+      <a class="menu__link" href="contacts.html"><span>Контакты</span><small>заявка и связь</small></a>
+    </nav>
+  </div>
+</aside>
+
+<div class="page-shell"><main>
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="hero__content">
+      <div class="hero__eyebrow reveal">контакты / быстрый выход на заказ</div>
+      <h1 class="hero__title metal-text reveal">связаться с нами</h1>
+      <p class="hero__lead reveal">Оставьте заявку и получите скидку 10% на аудит. Работаем круглосуточно. Форма вынесена в правую панель, а основные контакты собраны на этой странице.</p>
+      <div class="hero__actions reveal"><button class="cta" type="button" data-order-open>Открыть форму</button><a class="ghost" href="services.html">К услугам</a></div>
+    </div>
+    <div class="hero__visual"><img src="assets/img/info-client.png" alt=""><div class="hero__overlay"></div><div class="hero__caption">Частная энергослужба · спокойный сервис · понятная коммуникация</div></div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="contact-layout">
+      <article class="contact-card reveal">
+        <div class="contact-card__media"><img src="assets/img/info-luxury.png" alt=""></div>
+      </article>
+      <article class="contact-card reveal">
+        <div class="contact-card__body">
+          <div class="hero__eyebrow">Контакты</div>
+          <h3 class="metal-text">Связь без лишних шагов</h3>
+          <p>Фактический сценарий общения завязан на WhatsApp. Это самый прямой и быстрый канал для заявки с сайта.</p>
+          <div class="contact-list">
+            <div>г. Тула, ул. Демидовская плотина, дом 10</div>
+            <div>+7 929 070 00 05</div>
+            <div>Круглосуточно</div>
+            <div>Премиальные квартиры, дома, таунхаусы и коммерческие объекты</div>
+          </div>
+          <div class="hero__actions"><button class="cta" type="button" data-order-open>Открыть форму заказа</button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer"><div class="container footer__row"><div>© Честная Позиция</div><div>частная · энергия · служба</div></div></footer>
+</div>
+<div class="order-backdrop" data-order-close></div>
+<aside class="order-panel">
+  <div class="order-panel__inner">
+    <div class="order-panel__head">
+      <div>
+        <h3 class="metal-text">Заказать</h3>
+        <p>Оставьте заявку и получите консультацию по объекту. Кнопка отправляет заявку в WhatsApp.</p>
+      </div>
+      <button class="menu__close" type="button" data-order-close>✕</button>
+    </div>
+    <div class="order-panel__body">
+      <form id="waForm">
+        <div class="form-grid">
+          <div class="field"><label>Имя</label><input name="name" required></div>
+          <div class="field"><label>Телефон</label><input name="phone" required></div>
+          <div class="field"><label>Услуга</label>
+            <select name="service" required>
+              <option value="">Выберите</option>
+              <option>Монтаж зарядной станции</option>
+              <option>Монтаж вводного электрощита</option>
+              <option>Монтаж электропроводки</option>
+              <option>Монтаж люстры</option>
+              <option>Монтаж заземления</option>
+              <option>Монтаж СИП</option>
+            </select>
+          </div>
+          <div class="field"><label>Объект</label>
+            <select name="object" required>
+              <option value="">Выберите</option>
+              <option>Квартира</option><option>Дом</option><option>Таунхаус</option><option>Коммерческий объект</option>
+            </select>
+          </div>
+          <div class="field field--full"><label>Адрес / район</label><input name="address"></div>
+          <div class="field field--full"><label>Комментарий</label><textarea name="message"></textarea></div>
+          <div class="field field--full"><button class="cta" type="submit">Отправить в WhatsApp</button></div>
+        </div>
+      </form>
+      <div class="panel-note">г. Тула · Круглосуточно · Договор · Гарантия 5 лет · +7 929 070 00 05</div>
+    </div>
+  </div>
+</aside>
+<script src="assets/js/app.js"></script></body></html>

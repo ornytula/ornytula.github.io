@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Честная Позиция — About</title>
+<meta name="description" content="О компании и инженерном подходе">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Tektur:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<header class="header">
+  <div class="container header__row">
+    <button class="burger" type="button" data-menu-open aria-label="Открыть меню"><span></span><span></span><span></span></button>
+    <a class="brand" href="index.html"><img src="assets/img/logo.png" alt="Честная Позиция"></a>
+    <div class="header__tools">
+      <a class="header__link" href="contacts.html">Контакты</a>
+      <a class="header__btn header__search" href="contacts.html" aria-label="Поиск">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l5 5"></path></svg>
+      </a>
+      <button class="header__btn" type="button" data-order-open>Заказать</button>
+    </div>
+  </div>
+</header>
+<div class="menu-backdrop" data-menu-close></div>
+<aside class="menu">
+  <div class="menu__panel">
+    <div class="menu__top">
+      <div class="metal-text" style="font-size:24px;text-transform:uppercase">Меню</div>
+      <button class="menu__close" type="button" data-menu-close>✕</button>
+    </div>
+    <nav class="menu__nav">
+      <a class="menu__link" href="index.html"><span>Главная</span><small>входной экран</small></a>
+      <a class="menu__link" href="about.html"><span>О нас</span><small>позиция и подход</small></a>
+      <a class="menu__link" href="services.html"><span>Услуги</span><small>полный состав работ</small></a>
+      <a class="menu__link" href="portfolio.html"><span>Портфолио</span><small>объекты и кейсы</small></a>
+      <a class="menu__link" href="contacts.html"><span>Контакты</span><small>заявка и связь</small></a>
+    </nav>
+  </div>
+</aside>
+
+<div class="page-shell"><main>
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="hero__content">
+      <div class="hero__eyebrow reveal">о нас / позиция и опыт</div>
+      <h1 class="hero__title metal-text reveal">частная инженерная позиция</h1>
+      <p class="hero__lead reveal">Мы подходим к электрике как к инженерной задаче. Каждый объект рассчитывается, проверяется и реализуется по нормам. Не поток. Не дешёвка. Не временные решения.</p>
+      <div class="hero__actions reveal"><a class="cta" href="services.html">Смотреть услуги</a><button class="ghost" type="button" data-order-open>Оставить заявку</button></div>
+    </div>
+    <div class="hero__visual"><img src="assets/img/hero-master.png" alt=""><div class="hero__overlay"></div><div class="hero__caption">Более 13 лет на рынке и более 18 лет в энергетике</div></div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="feature-card showcase reveal">
+      <div class="showcase__media"><img src="assets/img/info-client.png" alt=""></div>
+      <div class="showcase__copy">
+        <div class="hero__eyebrow">Подход</div>
+        <h3 class="metal-text">Не монтаж. Система.</h3>
+        <p>Правильный выбор специалиста и материала надлежащего качества — это безопасность. Мы проектируем электрическую часть так, чтобы она работала стабильно, не перегружала объект и не конфликтовала с архитектурой пространства.</p>
+        <div class="kpis">
+          <div class="kpi"><b>ПУЭ</b><span>работа по нормам</span></div>
+          <div class="kpi"><b>ГОСТ</b><span>контроль материалов</span></div>
+          <div class="kpi"><b>СНИП</b><span>соблюдение требований</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="info-grid">
+      <article class="text-photo-card reveal"><div class="text-photo-card__media"><img src="assets/img/info-tools.png"></div><div class="text-photo-card__body"><h3>Расчёт нагрузок</h3><p>Каждая линия, защита и распределение групп подбираются под режим работы объекта.</p></div></article>
+      <article class="text-photo-card reveal"><div class="text-photo-card__media"><img src="assets/img/service-cable.png"></div><div class="text-photo-card__body"><h3>Контроль материалов</h3><p>Используем только материал надлежащего качества с обязательной сертификацией.</p></div></article>
+      <article class="text-photo-card reveal"><div class="text-photo-card__media"><img src="assets/img/info-house.png"></div><div class="text-photo-card__body"><h3>Безопасность</h3><p>Приоритет — стабильная работа системы и защита человека и оборудования на годы вперёд.</p></div></article>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer"><div class="container footer__row"><div>© Честная Позиция</div><div>частная · энергия · служба</div></div></footer>
+</div>
+<div class="order-backdrop" data-order-close></div>
+<aside class="order-panel">
+  <div class="order-panel__inner">
+    <div class="order-panel__head">
+      <div>
+        <h3 class="metal-text">Заказать</h3>
+        <p>Оставьте заявку и получите консультацию по объекту. Кнопка отправляет заявку в WhatsApp.</p>
+      </div>
+      <button class="menu__close" type="button" data-order-close>✕</button>
+    </div>
+    <div class="order-panel__body">
+      <form id="waForm">
+        <div class="form-grid">
+          <div class="field"><label>Имя</label><input name="name" required></div>
+          <div class="field"><label>Телефон</label><input name="phone" required></div>
+          <div class="field"><label>Услуга</label>
+            <select name="service" required>
+              <option value="">Выберите</option>
+              <option>Монтаж зарядной станции</option>
+              <option>Монтаж вводного электрощита</option>
+              <option>Монтаж электропроводки</option>
+              <option>Монтаж люстры</option>
+              <option>Монтаж заземления</option>
+              <option>Монтаж СИП</option>
+            </select>
+          </div>
+          <div class="field"><label>Объект</label>
+            <select name="object" required>
+              <option value="">Выберите</option>
+              <option>Квартира</option><option>Дом</option><option>Таунхаус</option><option>Коммерческий объект</option>
+            </select>
+          </div>
+          <div class="field field--full"><label>Адрес / район</label><input name="address"></div>
+          <div class="field field--full"><label>Комментарий</label><textarea name="message"></textarea></div>
+          <div class="field field--full"><button class="cta" type="submit">Отправить в WhatsApp</button></div>
+        </div>
+      </form>
+      <div class="panel-note">г. Тула · Круглосуточно · Договор · Гарантия 5 лет · +7 929 070 00 05</div>
+    </div>
+  </div>
+</aside>
+<script src="assets/js/app.js"></script></body></html>

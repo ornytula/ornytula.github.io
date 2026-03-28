@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Честная Позиция — Services</title>
+<meta name="description" content="Услуги премиального электрика">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Tektur:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<header class="header">
+  <div class="container header__row">
+    <button class="burger" type="button" data-menu-open aria-label="Открыть меню"><span></span><span></span><span></span></button>
+    <a class="brand" href="index.html"><img src="assets/img/logo.png" alt="Честная Позиция"></a>
+    <div class="header__tools">
+      <a class="header__link" href="contacts.html">Контакты</a>
+      <a class="header__btn header__search" href="contacts.html" aria-label="Поиск">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l5 5"></path></svg>
+      </a>
+      <button class="header__btn" type="button" data-order-open>Заказать</button>
+    </div>
+  </div>
+</header>
+<div class="menu-backdrop" data-menu-close></div>
+<aside class="menu">
+  <div class="menu__panel">
+    <div class="menu__top">
+      <div class="metal-text" style="font-size:24px;text-transform:uppercase">Меню</div>
+      <button class="menu__close" type="button" data-menu-close>✕</button>
+    </div>
+    <nav class="menu__nav">
+      <a class="menu__link" href="index.html"><span>Главная</span><small>входной экран</small></a>
+      <a class="menu__link" href="about.html"><span>О нас</span><small>позиция и подход</small></a>
+      <a class="menu__link" href="services.html"><span>Услуги</span><small>полный состав работ</small></a>
+      <a class="menu__link" href="portfolio.html"><span>Портфолио</span><small>объекты и кейсы</small></a>
+      <a class="menu__link" href="contacts.html"><span>Контакты</span><small>заявка и связь</small></a>
+    </nav>
+  </div>
+</aside>
+
+<div class="page-shell"><main>
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="hero__content">
+      <div class="hero__eyebrow reveal">услуги / состав работ</div>
+      <h1 class="hero__title metal-text reveal">решения под ключ</h1>
+      <p class="hero__lead reveal">Полный состав работ с агрессивной премиальной подачей. Просторные блоки, фотографии в доминирующем формате, крупный текст и обязательная кнопка «Заказать» в каждой карточке.</p>
+      <div class="hero__actions reveal"><button class="cta" type="button" data-order-open>Оставить заявку</button><a class="ghost" href="portfolio.html">Смотреть объекты</a></div>
+    </div>
+    <div class="hero__visual"><img src="assets/img/hero-car.png" alt=""><div class="hero__overlay"></div><div class="hero__caption">Чёрно-красная luxury-стилистика, щиты, кабели, зарядка, свет и инженерные детали</div></div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="hero__eyebrow">Услуги</div>
+      <h2 class="section-title metal-text">Выберите нужную услугу</h2>
+      <p class="section-lead">Работаем по договору, с гарантией 5 лет. Чистый монтаж, точный расчёт, премиальная инженерная подача и круглосуточный выход на объект.</p>
+    </div>
+    <div class="services-grid">
+      <article class="service-card service-card--wide reveal">
+        <div class="service-card__media"><img src="assets/img/service-car.png" alt=""><div class="service-card__overlay"></div></div>
+        <div class="service-card__body">
+          <div class="service-card__top"><span class="service-card__label">220 / 380V</span><span class="service-card__price">от 73 000 ₽</span></div>
+          <h3>Монтаж зарядной станции</h3>
+          <p>Комплекс мероприятий при данной работе способствует бесперебойной работе системы и корректной интеграции в объект высокого уровня.</p>
+          <a class="cta" href="contacts.html">Заказать</a>
+        </div>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-card__media"><img src="assets/img/service-panel.png" alt=""><div class="service-card__overlay"></div></div>
+        <div class="service-card__body">
+          <div class="service-card__top"><span class="service-card__label">щит / защита</span><span class="service-card__price">от 17 000 ₽</span></div>
+          <h3>Монтаж вводного электрощита</h3>
+          <p>Правильный выбор специалиста и материала надлежащего качества — это ваша безопасность и стабильная работа всей системы.</p>
+          <a class="cta" href="contacts.html">Заказать</a>
+        </div>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-card__media"><img src="assets/img/service-cable.png" alt=""><div class="service-card__overlay"></div></div>
+        <div class="service-card__body">
+          <div class="service-card__top"><span class="service-card__label">дом / квартира</span><span class="service-card__price">от 2 900 ₽ / кв.м</span></div>
+          <h3>Монтаж электропроводки</h3>
+          <p>Используем проверенный материал известных производителей, проводим расчёт нагрузок и грамотное распределение розеточных и световых групп.</p>
+          <a class="cta" href="contacts.html">Заказать</a>
+        </div>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-card__media"><img src="assets/img/service-light.png" alt=""><div class="service-card__overlay"></div></div>
+        <div class="service-card__body">
+          <div class="service-card__top"><span class="service-card__label">свет / интерьер</span><span class="service-card__price">от 2 900 ₽</span></div>
+          <h3>Монтаж люстры</h3>
+          <p>Даже если задача кажется простой, монтаж люстры лучше доверить профессиональному электрику, чтобы исключить ошибки и перегрузки.</p>
+          <a class="cta" href="contacts.html">Заказать</a>
+        </div>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-card__media"><img src="assets/img/service-ground.png" alt=""><div class="service-card__overlay"></div></div>
+        <div class="service-card__body">
+          <div class="service-card__top"><span class="service-card__label">защита / контур</span><span class="service-card__price">от 13 800 ₽</span></div>
+          <h3>Монтаж заземления</h3>
+          <p>Защита человека от поражения током, корректная работа высокочувствительного оборудования и снижение риска повреждения техники.</p>
+          <a class="cta" href="contacts.html">Заказать</a>
+        </div>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-card__media"><img src="assets/img/service-sip.png" alt=""><div class="service-card__overlay"></div></div>
+        <div class="service-card__body">
+          <div class="service-card__top"><span class="service-card__label">сип / линия</span><span class="service-card__price">от 20 500 ₽</span></div>
+          <h3>Монтаж СИП</h3>
+          <p>Проводим работы в любое время, независимо от погодных условий, с аккуратной инженерной логикой и чистой подачей на объекте.</p>
+          <a class="cta" href="contacts.html">Заказать</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer"><div class="container footer__row"><div>© Честная Позиция</div><div>частная · энергия · служба</div></div></footer>
+</div>
+<div class="order-backdrop" data-order-close></div>
+<aside class="order-panel">
+  <div class="order-panel__inner">
+    <div class="order-panel__head">
+      <div>
+        <h3 class="metal-text">Заказать</h3>
+        <p>Оставьте заявку и получите консультацию по объекту. Кнопка отправляет заявку в WhatsApp.</p>
+      </div>
+      <button class="menu__close" type="button" data-order-close>✕</button>
+    </div>
+    <div class="order-panel__body">
+      <form id="waForm">
+        <div class="form-grid">
+          <div class="field"><label>Имя</label><input name="name" required></div>
+          <div class="field"><label>Телефон</label><input name="phone" required></div>
+          <div class="field"><label>Услуга</label>
+            <select name="service" required>
+              <option value="">Выберите</option>
+              <option>Монтаж зарядной станции</option>
+              <option>Монтаж вводного электрощита</option>
+              <option>Монтаж электропроводки</option>
+              <option>Монтаж люстры</option>
+              <option>Монтаж заземления</option>
+              <option>Монтаж СИП</option>
+            </select>
+          </div>
+          <div class="field"><label>Объект</label>
+            <select name="object" required>
+              <option value="">Выберите</option>
+              <option>Квартира</option><option>Дом</option><option>Таунхаус</option><option>Коммерческий объект</option>
+            </select>
+          </div>
+          <div class="field field--full"><label>Адрес / район</label><input name="address"></div>
+          <div class="field field--full"><label>Комментарий</label><textarea name="message"></textarea></div>
+          <div class="field field--full"><button class="cta" type="submit">Отправить в WhatsApp</button></div>
+        </div>
+      </form>
+      <div class="panel-note">г. Тула · Круглосуточно · Договор · Гарантия 5 лет · +7 929 070 00 05</div>
+    </div>
+  </div>
+</aside>
+<script src="assets/js/app.js"></script></body></html>
